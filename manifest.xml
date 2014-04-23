@@ -4,6 +4,7 @@
 	<author>ColdTrick IT Solutions</author>
 	<version>0.1</version>
 	<description>Configure CK Editor</description>
+	<id>ckeditor_extended</id>
 	<website>http://www.coldtrick.com/</website>
 	<repository>https://github.com/ColdTrick/ckeditor_extended</repository>
 	<bugtracker>https://github.com/ColdTrick/ckeditor_extended/issues</bugtracker>

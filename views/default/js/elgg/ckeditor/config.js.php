@@ -1,16 +1,12 @@
 <?php
 /**
- * Plugin settings for CKEditor Extended
- *
- * @uses $vars['entity'] the plugin entity
+ * Overrule the default configuration of the CKEditor with those of the plugin settings
  */
 
-$plugin = elgg_extract("entity", $vars);
-
-
-$editor_config = $plugin->editor_config;
-if (empty($editor_config)) {
-	$editor_config = <<<JS
+$settings = elgg_get_plugin_setting("editor_config", "ckeditor_extended");
+if (empty($settings)) {
+	// revert to the basic settings
+	$settings = <<<JS
 toolbar: [['Bold', 'Italic', 'Underline'], ['Strike', 'NumberedList', 'BulletedList', 'Undo', 'Redo', 'Link', 'Unlink', 'Image', 'Blockquote', 'Paste', 'PasteFromWord', 'Maximize']],
 removeButtons: 'Subscript,Superscript', // To have Underline back
 allowedContent: true,
@@ -28,8 +24,12 @@ autoGrow_maxHeight: $(window).height() - 100,
 JS;
 }
 
-echo "<div>";
-echo elgg_echo("ckeditor:settings:editor_config");
-echo elgg_view("input/plaintext", array("name" => "params[editor_config]", "value" => $editor_config));
-echo "<div class='elgg-subtext'>" . elgg_view("output/url", array("href" => "http://docs.ckeditor.com/#!/api/CKEDITOR.config", "text" => elgg_echo("ckeditor:settings:link"), "target" => "_blank"));
-echo "</div>";
+?>
+define(function(require) {
+	var elgg = require('elgg');
+	var $ = require('jquery');
+
+	return {
+		<?php echo $settings; ?>
+	};
+});
