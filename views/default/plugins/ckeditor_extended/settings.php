@@ -7,6 +7,11 @@
 
 $plugin = elgg_extract("entity", $vars);
 
+$noyes_options = array(
+	"no" => elgg_echo("option:no"),
+	"yes" => elgg_echo("option:yes"),
+);
+
 $show_html_toggler_options = array(
 	"yes" => elgg_echo("option:yes"),
 	"admin_only" => elgg_echo("ckeditor:settings:show_html_toggler:option:admin_only"),
@@ -41,5 +46,10 @@ echo "</div>";
 
 echo "<div>";
 echo elgg_echo("ckeditor:settings:show_html_toggler");
-echo elgg_view("input/select", array("name" => "params[show_html_toggler]", "value" => $plugin->show_html_toggler, "options_values" => $show_html_toggler_options));
+echo elgg_view("input/select", array("name" => "params[show_html_toggler]", "value" => $plugin->show_html_toggler, "options_values" => $show_html_toggler_options, "class" => "mlm"));
+echo "</div>";
+
+echo "<div>";
+echo elgg_echo("ckeditor:settings:image_upload_allowed");
+echo elgg_view("input/select", array("name" => "params[image_upload_allowed]", "value" => $plugin->image_upload_allowed, "options_values" => $noyes_options, "class" => "mlm"));
 echo "</div>";

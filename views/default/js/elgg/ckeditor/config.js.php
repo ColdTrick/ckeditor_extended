@@ -24,6 +24,14 @@ autoGrow_maxHeight: $(window).height() - 100,
 JS;
 }
 
+$image_upload_allowed = elgg_get_plugin_setting("image_upload_allowed", "ckeditor_extended");;
+if ($image_upload_allowed == "yes") {
+	$settings .= "filebrowserImageBrowseUrl: ((elgg.is_logged_in()) ? '/ckeditor/browse' : false),";
+	$settings .= "filebrowserImageUploadUrl: ((elgg.is_logged_in()) ? '/ckeditor/upload' : false),";
+	$settings .= "filebrowserImageWindowWidth: '640',";
+	$settings .= "filebrowserImageWindowHeight: '480',";
+}
+
 ?>
 define(function(require) {
 	var elgg = require('elgg');
