@@ -16,7 +16,7 @@ if ($upload["name"]) {
  	
  	$funcNum = get_input('CKEditorFuncNum');
  	
- 	$url = 'ckeditor/download/' . $user_guid . '/' . $upload["name"];
+ 	$url = '/ckeditor/download/' . $user_guid . '/' . $upload["name"];
  	
  	echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '');</script>";
 }

@@ -27,7 +27,7 @@ $body .= <<<JS
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".ckeditor-extended-browse > li").click(function() {
-			var url = "ckeditor/download/$user_guid/" + $(this).find(".elgg-body").html();
+			var url = "/ckeditor/download/$user_guid/" + $(this).find(".elgg-body").html();
 			window.opener.CKEDITOR.tools.callFunction($funcNum, url, '');
 			window.close();
 		});
