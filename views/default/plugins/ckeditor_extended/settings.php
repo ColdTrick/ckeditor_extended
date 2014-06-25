@@ -14,7 +14,7 @@ $noyes_options = array(
 
 $show_html_toggler_options = array(
 	"yes" => elgg_echo("option:yes"),
-	"admin_only" => elgg_echo("ckeditor:settings:show_html_toggler:option:admin_only"),
+	"admin_only" => elgg_echo("ckeditor_extended:settings:show_html_toggler:option:admin_only"),
 	"no" => elgg_echo("option:no"),
 );
 
@@ -39,17 +39,38 @@ JS;
 }
 
 echo "<div>";
-echo elgg_echo("ckeditor:settings:editor_config");
+echo elgg_echo("ckeditor_extended:settings:editor_config");
 echo elgg_view("input/plaintext", array("name" => "params[editor_config]", "value" => $editor_config));
-echo "<div class='elgg-subtext'>" . elgg_view("output/url", array("href" => "http://docs.ckeditor.com/#!/api/CKEDITOR.config", "text" => elgg_echo("ckeditor:settings:link"), "target" => "_blank"));
+echo "<div class='elgg-subtext'>" . elgg_view("output/url", array("href" => "http://docs.ckeditor.com/#!/api/CKEDITOR.config", "text" => elgg_echo("ckeditor_extended:settings:link"), "target" => "_blank"));
 echo "</div>";
 
 echo "<div>";
-echo elgg_echo("ckeditor:settings:show_html_toggler");
+echo elgg_echo("ckeditor_extended:settings:show_html_toggler");
 echo elgg_view("input/select", array("name" => "params[show_html_toggler]", "value" => $plugin->show_html_toggler, "options_values" => $show_html_toggler_options, "class" => "mlm"));
 echo "</div>";
 
 echo "<div>";
-echo elgg_echo("ckeditor:settings:image_upload_allowed");
+echo elgg_echo("ckeditor_extended:settings:image_upload_allowed");
 echo elgg_view("input/select", array("name" => "params[image_upload_allowed]", "value" => $plugin->image_upload_allowed, "options_values" => $noyes_options, "class" => "mlm"));
 echo "</div>";
+
+
+$htmlawed_settings = "<div class='pbm'>" . elgg_echo("ckeditor_extended:settings:htmlawed:info") . "</div>";
+
+$htmlawed_settings .= "<div>";
+$htmlawed_settings .= elgg_echo("ckeditor_extended:settings:htmlawed:elements");
+$htmlawed_settings .= elgg_view("input/text", array(
+	"name" => "params[htmlawed_elements]",
+	"value" => $plugin->htmlawed_elements
+));
+$htmlawed_settings .= "</div>";
+
+$htmlawed_settings .= "<div>";
+$htmlawed_settings .= elgg_echo("ckeditor_extended:settings:htmlawed:schemes");
+$htmlawed_settings .= elgg_view("input/text", array(
+		"name" => "params[htmlawed_schemes]",
+		"value" => $plugin->htmlawed_schemes
+));
+$htmlawed_settings .= "</div>";
+
+echo elgg_view_module("inline", elgg_echo("ckeditor_extended:settings:htmlawed:title"), $htmlawed_settings);
