@@ -76,7 +76,13 @@ define(function(require) {
 	};
 
 	CKEDITOR.on('instanceReady', elggCKEditor.fixImageAttributes);
-
+	CKEDITOR.on('instanceReady', function(event) {
+		if ($.browser.msie) {
+	        $('iframe.cke_wysiwyg_frame', event.editor.container.$).contents().on('click', function() {
+	        	event.editor.focus();
+	        });
+		}
+    }); 
 	// Live handlers don't need to wait for domReady and only need to be registered once.
 	$('.ckeditor-toggle-editor').live('click', elggCKEditor.toggleEditor);
 
