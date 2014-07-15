@@ -11,7 +11,7 @@ if (!file_exists($path)) {
 }
 $upload = elgg_extract("upload", $_FILES);
 
-if ($upload["name"]) {
+if (get_resized_image_from_uploaded_file("upload", 200, 200)) {
  	move_uploaded_file($upload["tmp_name"], $path . $upload["name"]);
  	
  	$funcNum = get_input('CKEditorFuncNum');
@@ -19,4 +19,6 @@ if ($upload["name"]) {
  	$url = '/ckeditor/download/' . $user_guid . '/' . $upload["name"];
  	
  	echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '');</script>";
+} else {
+	echo elgg_echo("ckeditor_extended:upload:no_image");
 }

@@ -12,5 +12,7 @@ return array(
 	'ckeditor_extended:settings:htmlawed:title' => "HTMLawed settings",
 	'ckeditor_extended:settings:htmlawed:info' => "Configure extra rules for htmlawed to trust specific elements or schemes",
 	'ckeditor_extended:settings:htmlawed:elements' => "HTML elements",
-	'ckeditor_extended:settings:htmlawed:schemes' => "Schemes",	
+	'ckeditor_extended:settings:htmlawed:schemes' => "Schemes",
+
+	'ckeditor_extended:upload:no_image' => "The provided file is not an image",
 );
