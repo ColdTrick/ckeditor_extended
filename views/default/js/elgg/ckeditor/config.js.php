@@ -26,8 +26,8 @@ JS;
 
 $image_upload_allowed = elgg_get_plugin_setting("image_upload_allowed", "ckeditor_extended");;
 if ($image_upload_allowed == "yes") {
-	$settings .= "filebrowserImageBrowseUrl: ((elgg.is_logged_in()) ? '/ckeditor/browse' : false),";
-	$settings .= "filebrowserImageUploadUrl: ((elgg.is_logged_in()) ? '/ckeditor/upload' : false),";
+	$settings .= "filebrowserImageBrowseUrl: ((elgg.is_logged_in()) ? elgg.normalize_url('ckeditor/browse') : false),";
+	$settings .= "filebrowserImageUploadUrl: ((elgg.is_logged_in()) ? elgg.normalize_url('ckeditor/upload') : false),";
 	$settings .= "filebrowserImageWindowWidth: '640',";
 	$settings .= "filebrowserImageWindowHeight: '480',";
 }
