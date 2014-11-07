@@ -17,7 +17,7 @@ if (get_resized_image_from_uploaded_file("upload", 200, 200)) {
  	
  	$funcNum = get_input('CKEditorFuncNum');
  		
- 	$url = '/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $upload["name"] . '&site_guid=' . $site_guid;
+ 	$url = elgg_normalize_url('/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $upload["name"] . '&site_guid=' . $site_guid);
  	
  	echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '');</script>";
 } else {
