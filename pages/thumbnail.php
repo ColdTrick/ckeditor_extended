@@ -9,7 +9,7 @@ if (!isset($_GET['guid']) || !isset($_GET['site_guid']) || !isset($_GET['name'])
 	exit;
 }
 
-$name = strtolower($_GET['name']);
+$name = $_GET['name'];
 $guid = (int) $_GET['guid'];
 $site_guid = (int) $_GET['site_guid'];
 
