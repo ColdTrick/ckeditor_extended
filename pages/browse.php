@@ -6,7 +6,7 @@ $funcNum = get_input('CKEditorFuncNum');
 $user_guid = elgg_get_logged_in_user_guid();
 $site_guid = elgg_get_site_entity()->getGUID();
 $path = ckeditor_extended_get_upload_path($user_guid);
-$dir = opendir($path);
+$dir = @opendir($path);
 
 $body = "<ul class='ckeditor-extended-browse'>";
 
@@ -16,7 +16,7 @@ if ($dir) {
 			$img = elgg_view("output/img", array("src" => "mod/ckeditor_extended/pages/thumbnail.php?guid=" . $user_guid . "&name=" . $file . "&site_guid=" . $site_guid));
 			
 			$body .= "<li>";
-			$body .= elgg_view_image_block($img, $file);			
+			$body .= elgg_view_image_block($img, $file);
 			$body .= "</li>";
 		}
 	}
@@ -32,7 +32,7 @@ $body .= <<<JS
 			window.opener.CKEDITOR.tools.callFunction($funcNum, url, '');
 			window.close();
 		});
-	});		
+	});
 </script>
 JS;
 
