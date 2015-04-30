@@ -11,7 +11,7 @@ toolbar: [['Bold', 'Italic', 'Underline'], ['Strike', 'NumberedList', 'BulletedL
 removeButtons: 'Subscript,Superscript', // To have Underline back
 allowedContent: true,
 baseHref: elgg.config.wwwroot,
-removePlugins: 'contextmenu,tabletools,resize',
+removePlugins: 'tabletools,resize',
 defaultLanguage: 'en',
 language: elgg.config.language,
 skin: 'moono',

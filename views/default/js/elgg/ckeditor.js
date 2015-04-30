@@ -4,6 +4,7 @@ define(function(require) {
 	var CKEDITOR = require('ckeditor');
 	
 	CKEDITOR.plugins.addExternal('mediaembed', elgg.get_site_url() + 'mod/ckeditor_extended/vendors/plugins/mediaembed/', 'plugin.js');
+	CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_site_url() + 'mod/ckeditor/views/default/js/elgg/ckeditor/blockimagepaste.js', '');
 	
 	var elggCKEditor = {
 
@@ -32,7 +33,9 @@ define(function(require) {
 		 *
 		 * @return void
 		 */
-		init: function() {
+		init: function(textarea) {
+			// show the toggle-editor link which is hidden by default, so it will only show up if the editor is correctly loaded
+			$('.ckeditor-toggle-editor[href="#' + textarea.id + '"]').show();
 		},
 
 		/**
