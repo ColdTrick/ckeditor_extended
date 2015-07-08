@@ -1,6 +1,12 @@
 Version History
 ===============
 
+1.1 (2015-07-08):
+
+- added: composer support
+- changed: updated for 1.11
+- fixed: suppress PHP warning during browsing because the warning is handled
+
 1.0 (2014-11-17):
 
 - initial version
