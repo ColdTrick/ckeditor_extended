@@ -10,16 +10,20 @@ if (!file_exists($path)) {
 		exit();
 	}
 }
+
 $upload = elgg_extract("upload", $_FILES);
 
 if (get_resized_image_from_uploaded_file("upload", 200, 200)) {
- 	move_uploaded_file($upload["tmp_name"], $path . $upload["name"]);
+	
+	$filename = $upload["name"];
+	
+ 	move_uploaded_file($upload["tmp_name"], $path . $filename);
  	
  	$funcNum = get_input('CKEditorFuncNum');
  		
- 	$url = elgg_normalize_url('/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $upload["name"] . '&site_guid=' . $site_guid);
+ 	$url = elgg_normalize_url('/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $filename . '&site_guid=' . $site_guid);
  	
- 	echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '');</script>";
+ 	echo elgg_format_element('script', ['type' => 'text/javascript'], "window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '');");
 } else {
 	echo elgg_echo("ckeditor_extended:upload:no_image");
 }

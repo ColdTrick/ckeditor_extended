@@ -8,33 +8,39 @@ $site_guid = elgg_get_site_entity()->getGUID();
 $path = ckeditor_extended_get_upload_path($user_guid);
 $dir = @opendir($path);
 
-$body = "<ul class='ckeditor-extended-browse'>";
-
+$files = '';
 if ($dir) {
 	while (($file = readdir($dir)) !== false) {
 		if (!is_dir($file)) {
-			$img = elgg_view("output/img", array("src" => "mod/ckeditor_extended/pages/thumbnail.php?guid=" . $user_guid . "&name=" . $file . "&site_guid=" . $site_guid));
+			$src = 'mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid;
+			$img = elgg_view('output/img', [
+				'src' => $src,
+				'alt' => $file
+			]);
 			
-			$body .= "<li>";
-			$body .= elgg_view_image_block($img, $file);
-			$body .= "</li>";
+			$text = elgg_view('output/url',[
+				'text' => elgg_view_icon('delete-alt-hover'),
+				'href' => 'action/ckeditor_extended/delete?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid,
+				'class' => 'float-alt elgg-discoverable ckeditor-delete-file',
+				'title' => elgg_echo('delete')
+			]);
+			$text .= $file;
+			
+			$files .= elgg_format_element('li', [
+				'class' => 'elgg-discover',
+				'data-user-guid' => $user_guid,
+				'data-site-guid' => $site_guid,
+				'data-file-name' => $file
+			], elgg_view_image_block($img, $text));
 		}
 	}
 }
 
-$body .= "</ul>";
+$body = elgg_format_element('ul', ['class' => 'ckeditor-extended-browse', 'rel' => $funcNum], $files);
 
-$body .= <<<JS
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".ckeditor-extended-browse > li").click(function() {
-			var url = elgg.get_site_url() + "mod/ckeditor_extended/pages/thumbnail.php?guid={$user_guid}&site_guid={$site_guid}&name=" + $(this).find(".elgg-body").html();
-			window.opener.CKEDITOR.tools.callFunction($funcNum, url, '');
-			window.close();
-		});
-	});
-</script>
-JS;
+$body .= elgg_format_element('script', ['type' => 'text/javascript'], 'require(["ckeditor_extended/browse_files"]);');
 
-
-echo elgg_view("page/elements/html", array("head" => elgg_view('page/elements/head'), "body" => $body));
+echo elgg_view('page/elements/html', [
+	'head' => elgg_view('page/elements/head'),
+	'body' => $body
+]);
