@@ -27,16 +27,19 @@ if ($dir) {
 			$text .= $file;
 			
 			$files .= elgg_format_element('li', [
-				'class' => 'elgg-discover',
+				'class' => 'elgg-discover elgg-divide-bottom',
 				'data-user-guid' => $user_guid,
 				'data-site-guid' => $site_guid,
 				'data-file-name' => $file
-			], elgg_view_image_block($img, $text));
+			], elgg_view_image_block($img, $text, ['class' => 'pam']));
 		}
 	}
 }
 
-$body = elgg_format_element('ul', ['class' => 'ckeditor-extended-browse', 'rel' => $funcNum], $files);
+$body = elgg_format_element('ul', [
+	'class' => 'ckeditor-extended-browse elgg-divide-top elgg-divide-left elgg-divide-right mam',
+	'rel' => $funcNum
+], $files);
 
 $body .= elgg_format_element('script', ['type' => 'text/javascript'], 'require(["ckeditor_extended/browse_files"]);');
 
