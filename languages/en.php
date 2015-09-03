@@ -6,6 +6,7 @@ return array(
 	'ckeditor_extended:settings:example' => "Example of your settings",
 	'ckeditor_extended:settings:example:description' => "This editor shows your plugin settings in effect, so you can test things out. No matter what you enter in this field it will not be saved.",
 	'ckeditor_extended:settings:image_upload_allowed' => "Allow image upload in image dialog window of editor",
+	'ckeditor_extended:settings:overwrite_uploaded_images' => "Overwrite existing images with the same name when uploading",
 	'ckeditor_extended:settings:show_html_toggler' => "Show the HTML toggler link",
 	'ckeditor_extended:settings:show_html_toggler:option:admin_only' => "Only for administrators",
 

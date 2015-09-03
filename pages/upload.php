@@ -17,6 +17,13 @@ if (get_resized_image_from_uploaded_file("upload", 200, 200)) {
 	
 	$filename = $upload["name"];
 	
+	// check for uniqueness
+	if (elgg_get_plugin_setting('overwrite_uploaded_images', 'ckeditor_extended') === 'no') {
+		while (file_exists($path . $filename)) {
+			$filename .= '1';
+		}
+	}
+	
  	move_uploaded_file($upload["tmp_name"], $path . $filename);
  	
  	$funcNum = get_input('CKEditorFuncNum');

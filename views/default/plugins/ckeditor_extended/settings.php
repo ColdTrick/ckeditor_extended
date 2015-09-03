@@ -12,6 +12,8 @@ $noyes_options = array(
 	"yes" => elgg_echo("option:yes"),
 );
 
+$yesno_options = array_reverse($noyes_options, true);
+
 $show_html_toggler_options = array(
 	"yes" => elgg_echo("option:yes"),
 	"admin_only" => elgg_echo("ckeditor_extended:settings:show_html_toggler:option:admin_only"),
@@ -52,6 +54,11 @@ echo "</div>";
 echo "<div>";
 echo elgg_echo("ckeditor_extended:settings:image_upload_allowed");
 echo elgg_view("input/select", array("name" => "params[image_upload_allowed]", "value" => $plugin->image_upload_allowed, "options_values" => $noyes_options, "class" => "mlm"));
+echo "</div>";
+
+echo "<div>";
+echo elgg_echo("ckeditor_extended:settings:overwrite_uploaded_images");
+echo elgg_view("input/select", array("name" => "params[overwrite_uploaded_images]", "value" => $plugin->overwrite_uploaded_images, "options_values" => $yesno_options, "class" => "mlm"));
 echo "</div>";
 
 
