@@ -19,8 +19,17 @@ if (get_resized_image_from_uploaded_file("upload", 200, 200)) {
 	
 	// check for uniqueness
 	if (elgg_get_plugin_setting('overwrite_uploaded_images', 'ckeditor_extended') === 'no') {
+		
+		$filename_parts = explode('.', $filename);
+		$ext = array_pop($filename_parts);
+		$count = 0;
+		
 		while (file_exists($path . $filename)) {
-			$filename .= '1';
+			$count++;
+			
+			$filename = implode('.', $filename_parts);
+			$filename .= "_{$count}";
+			$filename .= ".{$ext}";
 		}
 	}
 	
