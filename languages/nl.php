@@ -10,6 +10,7 @@ $language = array (
   'ckeditor_extended:settings:htmlawed:elements' => 'HTML elementen',
   'ckeditor_extended:settings:htmlawed:schemes' => 'Schema\'s',
   'ckeditor_extended:upload:no_image' => 'Het opgegeven bestand is geen afbeelding',
+  'ckeditor_extended:upload:no_upload' => 'Geen bestand geupload. Mogelijk is het bestand te groot.',
   'ckeditor_extended:settings:editor_config' => 'Pas de instellingen van de CKEditor hieronder aan',
   'ckeditor_extended:settings:link' => 'Bekijk op de website van CKEditor alle mogelijke instellingen',
   'ckeditor_extended:settings:example' => 'Voorbeeld van de editor',

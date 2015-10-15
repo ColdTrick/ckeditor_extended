@@ -16,4 +16,5 @@ return array(
 	'ckeditor_extended:settings:htmlawed:schemes' => "Schemes",
 
 	'ckeditor_extended:upload:no_image' => "The provided file is not an image",
+	'ckeditor_extended:upload:no_upload' => "No upload found. Maybe the file is too big",
 );
