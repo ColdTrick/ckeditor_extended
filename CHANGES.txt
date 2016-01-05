@@ -1,6 +1,15 @@
 Version History
 ===============
 
+2.0 (2016-01-05):
+
+- added: a plugin setting now controls if uploaded files will be overwritten
+- added: different notice when uploading a file (and it is missing)
+- added: you can now delete an uploaded image from the browse window
+- changed: updated for Elgg 2.0
+- chore: replaced custom css with helper classes
+- fixed: incorrect filename on duplicate image
+
 1.1 (2015-07-08):
 
 - added: composer support
