@@ -15,14 +15,14 @@ if ($dir) {
 			$src = 'mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid;
 			$img = elgg_view('output/img', [
 				'src' => $src,
-				'alt' => $file
+				'alt' => $file,
 			]);
 			
 			$text = elgg_view('output/url',[
 				'text' => elgg_view_icon('delete-alt-hover'),
 				'href' => 'action/ckeditor_extended/delete?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid,
 				'class' => 'float-alt elgg-discoverable ckeditor-delete-file',
-				'title' => elgg_echo('delete')
+				'title' => elgg_echo('delete'),
 			]);
 			$text .= $file;
 			
@@ -30,7 +30,7 @@ if ($dir) {
 				'class' => 'elgg-discover elgg-divide-bottom',
 				'data-user-guid' => $user_guid,
 				'data-site-guid' => $site_guid,
-				'data-file-name' => $file
+				'data-file-name' => $file,
 			], elgg_view_image_block($img, $text, ['class' => 'pam']));
 		}
 	}
@@ -38,12 +38,13 @@ if ($dir) {
 
 $body = elgg_format_element('ul', [
 	'class' => 'ckeditor-extended-browse elgg-divide-top elgg-divide-left elgg-divide-right mam',
-	'rel' => $funcNum
+	'rel' => $funcNum,
 ], $files);
 
-$body .= elgg_format_element('script', ['type' => 'text/javascript'], 'require(["ckeditor_extended/browse_files"]);');
+$body .= elgg_format_element('script', [], 'require(["ckeditor_extended/browse_files"]);');
+$body .= elgg_view('page/elements/foot');
 
 echo elgg_view('page/elements/html', [
 	'head' => elgg_view('page/elements/head'),
-	'body' => $body
+	'body' => $body,
 ]);

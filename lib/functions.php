@@ -24,5 +24,5 @@ function ckeditor_extended_get_upload_path($user_guid) {
 	$site_guid = elgg_get_site_entity()->getGUID();
 	$lower_bound = (int) max(floor($user_guid / $bucket_size) * $bucket_size, 1);
 	
-	return elgg_get_data_path() . "ckeditor_upload/" . $site_guid . "/" . $lower_bound . "/" . $user_guid . "/";
+	return elgg_get_data_path() . 'ckeditor_upload/' . $site_guid . '/' . $lower_bound . '/' . $user_guid . '/';
 }

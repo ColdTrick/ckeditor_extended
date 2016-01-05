@@ -23,38 +23,13 @@ if (isset($_SERVER["HTTP_IF_NONE_MATCH"])) {
 	}
 }
 
-$engine_dir = dirname(dirname(dirname(dirname(__FILE__)))) . '/engine/';
-
-// Get DB settings
-require_once $engine_dir . 'settings.php';
-
-global $CONFIG;
-
-if (isset($CONFIG->dataroot)) {
-	$data_root = $CONFIG->dataroot;
+$autoload_root = dirname(dirname(dirname(__DIR__)));
+if (!is_file("$autoload_root/vendor/autoload.php")) {
+	$autoload_root = dirname(dirname(dirname($autoload_root)));
 }
+require_once "$autoload_root/vendor/autoload.php";
 
-if (!isset($data_root)) {
-	$mysql_dblink = @mysql_connect($CONFIG->dbhost, $CONFIG->dbuser, $CONFIG->dbpass, true);
-	if ($mysql_dblink) {
-		if (@mysql_select_db($CONFIG->dbname, $mysql_dblink)) {
-			$q = "SELECT name, value FROM {$CONFIG->dbprefix}datalists WHERE name = 'dataroot'";
-			$result = mysql_query($q, $mysql_dblink);
-			if ($result) {
-				$row = mysql_fetch_object($result);
-				while ($row) {
-					if ($row->name == 'dataroot') {
-						$data_root = $row->value;
-					}
-	
-					$row = mysql_fetch_object($result);
-				}
-			}
-	
-			@mysql_close($mysql_dblink);
-		}
-	}
-}
+$data_root = \Elgg\Application::getDataPath();
 
 if (isset($data_root)) {
 	$bucket_size = 500;

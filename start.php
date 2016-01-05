@@ -18,9 +18,8 @@ function ckeditor_extended_init() {
 	elgg_register_page_handler('ckeditor', 'ckeditor_extended_page_handler');
 	
 	// extend CSS
-	elgg_extend_view('css/admin', 'css/ckeditor_extended/admin');
-	elgg_extend_view('css/elgg', 'css/ckeditor_extended/global');
-	elgg_extend_view('css/admin', 'css/ckeditor_extended/global');
+	elgg_extend_view('css/elgg', 'css/ckeditor_extended.css');
+	elgg_extend_view('css/admin', 'css/ckeditor_extended.css');
 	
 	// this way a simplecache JS file can be loaded from a .php file
 	elgg_register_simplecache_view('js/elgg/ckeditor/config.js');
