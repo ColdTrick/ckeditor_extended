@@ -1,13 +1,60 @@
 define(function(require) {
 	var elgg = require('elgg');
-	var $ = require('jquery'); require('jquery.ckeditor');
+	require('elgg/init');
+	var $ = require('jquery');
+	require('jquery.ckeditor');
 	var CKEDITOR = require('ckeditor');
+	var config = require('elgg/ckeditor/config');
 	
 	CKEDITOR.plugins.addExternal('mediaembed', elgg.get_site_url() + 'mod/ckeditor_extended/vendors/plugins/mediaembed/', 'plugin.js');
 	CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_simplecache_url('elgg/ckeditor/blockimagepaste.js'), '');
 	
 	var elggCKEditor = {
 
+		/**
+		 * A flag that indicates whether handlers were registered
+		 */
+		ready: false,
+		bind: function (selector) {
+			elggCKEditor.registerHandlers();
+			CKEDITOR = elgg.trigger_hook('prepare', 'ckeditor', null, CKEDITOR);
+			selector = selector || '.elgg-input-longtext';
+			if ($(selector).length === 0) {
+				return;
+			}
+			$(selector)
+					.not('[data-cke-init]')
+					.attr('data-cke-init', true)
+					.ckeditor(elggCKEditor.init, elggCKEditor.config);
+		},
+		/**
+		 * Register event and hook handlers
+		 * @return void
+		 */
+		registerHandlers: function () {
+			if (elggCKEditor.ready) {
+				return;
+			}
+			elgg.register_hook_handler('prepare', 'ckeditor', function (hook, type, params, CKEDITOR) {
+				CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_simplecache_url('elgg/ckeditor/blockimagepaste.js'), '');
+				CKEDITOR.on('instanceReady', elggCKEditor.fixImageAttributes);
+				return CKEDITOR;
+			});
+			elgg.register_hook_handler('embed', 'editor', function (hook, type, params, value) {
+				var textArea = $('#' + params.textAreaId);
+				var content = params.content;
+				if ($.fn.ckeditorGet) {
+					try {
+						var editor = textArea.ckeditorGet();
+						editor.insertHtml(content);
+						return false;
+					} catch (e) {
+						// do nothing.
+					}
+				}
+			});
+			elggCKEditor.ready = true;
+		},
 		/**
 		 * Toggles the CKEditor
 		 *
@@ -74,7 +121,7 @@ define(function(require) {
 		 * You can find configuration information here:
 		 * http://docs.ckeditor.com/#!/api/CKEDITOR.config
 		 */
-		config: require('elgg/ckeditor/config')
+		config: config
 
 	};
 

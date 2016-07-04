@@ -17,4 +17,6 @@ return array(
 
 	'ckeditor_extended:upload:no_image' => "The provided file is not an image",
 	'ckeditor_extended:upload:no_upload' => "No upload found. Maybe the file is too big",
+
+	'ckeditor_extended:output:inline_edit:default' => "No content saved yet. Start typing here",
 );
