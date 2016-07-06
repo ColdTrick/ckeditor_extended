@@ -14,7 +14,9 @@ if ($entity) {
 }
 
 $vars['class'] = 'ckeditor-extended-inline-edit';
-$vars['contenteditable'] = 'true';
+if (elgg_is_admin_logged_in()) {
+	$vars['contenteditable'] = 'true';
+}
 
 echo elgg_view('output/longtext', $vars);
 
