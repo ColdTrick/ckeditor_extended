@@ -47,10 +47,14 @@ function ckeditor_extended_init() {
 function ckeditor_extended_page_handler($page) {
 	switch($page[0]){
 		case 'upload':
-			include(dirname(__FILE__) . '/pages/upload.php');
+			echo elgg_view_resource('ckeditor_extended/upload', [
+				'CKEditorFuncNum' => get_input('CKEditorFuncNum'),
+			]);
 			return true;
 		case 'browse':
-			include(dirname(__FILE__) . '/pages/browse.php');
+			echo elgg_view_resource('ckeditor_extended/browse', [
+				'CKEditorFuncNum' => get_input('CKEditorFuncNum'),
+			]);
 			return true;
 		case 'download':
 			set_input('user_guid', $page[1]);

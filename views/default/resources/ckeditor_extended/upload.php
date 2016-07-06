@@ -42,7 +42,7 @@ if (elgg_get_plugin_setting('overwrite_uploaded_images', 'ckeditor_extended') ==
 	
 move_uploaded_file($upload['tmp_name'], $path . $filename);
  	
-$funcNum = get_input('CKEditorFuncNum');
+$funcNum = elgg_extract('CKEditorFuncNum', $vars);
  		
 $url = elgg_normalize_url('/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $filename . '&site_guid=' . $site_guid);
  	

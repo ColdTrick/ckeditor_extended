@@ -2,7 +2,7 @@
 
 gatekeeper();
 
-$funcNum = get_input('CKEditorFuncNum');
+$funcNum = elgg_extract('CKEditorFuncNum', $vars);
 $user_guid = elgg_get_logged_in_user_guid();
 $site_guid = elgg_get_site_entity()->getGUID();
 $path = ckeditor_extended_get_upload_path($user_guid);
