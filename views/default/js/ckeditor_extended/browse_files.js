@@ -8,11 +8,8 @@ define(function(require) {
 		$('.ckeditor-extended-browse > li').click(function(event) {
 			if (event.target.nodeName == 'SPAN') return;
 			
-			var user_guid = $(this).data().userGuid;
-			var site_guid = $(this).data().siteGuid;
-			var file_name = $(this).data().fileName;
-	
-			var url = elgg.get_site_url() + 'mod/ckeditor_extended/pages/thumbnail.php?guid=' + user_guid + '&site_guid=' + site_guid + '&name=' + file_name;
+			var url = $(this).data().embedUrl;
+			
 			var funcNum = $(this).parent().attr('rel');
 			
 			window.opener.CKEDITOR.tools.callFunction(funcNum, url, '');

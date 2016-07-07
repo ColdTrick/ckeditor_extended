@@ -19,4 +19,6 @@ return array(
 	'ckeditor_extended:upload:no_upload' => "No upload found. Maybe the file is too big",
 
 	'ckeditor_extended:output:inline_edit:default' => "No content saved yet. Start typing here",
+	'ckeditor_extended:browse:files:site' => "Site Files",
+	'ckeditor_extended:browse:files:user' => "Your Files",
 );

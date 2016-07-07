@@ -27,5 +27,10 @@
 		<priority>after</priority>
 	</requires>
 	
+	<suggests>
+		<type>plugin</type>
+		<name>asset_library</name>
+	</suggests>
+	
  	<category>ColdTrick</category>
 </plugin_manifest>
