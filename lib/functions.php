@@ -36,32 +36,45 @@ function ckeditor_extended_get_upload_path($user_guid) {
  * @return /ElggObject|false
  */
 function ckeditor_extended_get_inline_object($id, $create = false) {
+	static $cached = [];
 	if (empty($id)) {
 		return false;
 	}
 	
-	$entities = elgg_get_entities([
-		'type' => 'object',
-		'subtype' => 'ckeditor_inline',
-		'limit' => 1,
-		'joins' => 'JOIN ' . elgg_get_config('dbprefix') . "objects_entity oe ON oe.guid = e.guid",
-		'wheres' => "oe.title = '{$id}'",
-	]);
+	$prefix = elgg_extract(0, explode('_', $id));
 	
-	if (empty($entities)) {
-		if (!$create) {
-			return false;
+	if (!array_key_exists($prefix, $cached)) {
+		$cached[$prefix] = [];
+		
+		// preload entities
+		$entities = elgg_get_entities([
+			'type' => 'object',
+			'subtype' => 'ckeditor_inline',
+			'limit' => false,
+			'joins' => 'JOIN ' . elgg_get_config('dbprefix') . "objects_entity oe ON oe.guid = e.guid",
+			'wheres' => "oe.title LIKE '{$prefix}%'",
+		]);
+		foreach ($entities as $entity) {
+			$cached[$prefix][$entity->title] = $entity;
 		}
-		
-		$object = new \ElggObject();
-		$object->subtype = 'ckeditor_inline';
-		$object->title = $id;
-		$object->owner_guid = elgg_get_site_entity()->guid;
-		$object->container_guid = elgg_get_site_entity()->guid;
-		$object->access_id = ACCESS_PUBLIC;
-		
-		return $object;
 	}
 	
-	return $entities[0];
+	if (array_key_exists($id, $cached[$prefix])) {
+		return $cached[$prefix][$id];
+	}
+	
+	if (!$create) {
+		return false;
+	}
+	
+	$object = new \ElggObject();
+	$object->subtype = 'ckeditor_inline';
+	$object->title = $id;
+	$object->owner_guid = elgg_get_site_entity()->guid;
+	$object->container_guid = elgg_get_site_entity()->guid;
+	$object->access_id = ACCESS_PUBLIC;
+	
+	$cached[$prefix][$id] = $object;
+	
+	return $object;
 }
