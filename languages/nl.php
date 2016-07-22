@@ -1,10 +1,14 @@
 <?php
 /**
- * This file was created by Translation Editor v2.0
- * On 2014-07-17 09:16
+ * This file was created by Translation Editor v5.1
+ * On 2016-07-22 13:33
  */
 
-$language = array (
+return array (
+  'ckeditor_extended:browse:files:site' => 'Site Bestanden',
+  'ckeditor_extended:browse:files:user' => 'Jouw Bestanden',
+  'ckeditor_extended:settings:overwrite_uploaded_images' => 'Overschrijf bestaande afbeeldingen met dezelfde naam indien ze worden geupload',
+  'ckeditor_extended:output:inline_edit:default' => 'Nog geen content opgeslagen. Start hier met typen',
   'ckeditor_extended:settings:htmlawed:title' => 'HTMLawed instellingen',
   'ckeditor_extended:settings:htmlawed:info' => 'Gonfigureer extra regels voor HTMLawed om bepaalde elementen en schema\'s te vertrouwen',
   'ckeditor_extended:settings:htmlawed:elements' => 'HTML elementen',
@@ -19,4 +23,3 @@ $language = array (
   'ckeditor_extended:settings:show_html_toggler' => 'Toon de HTML schakel link',
   'ckeditor_extended:settings:show_html_toggler:option:admin_only' => 'Alleen voor beheerders',
 );
-add_translation("nl", $language);
