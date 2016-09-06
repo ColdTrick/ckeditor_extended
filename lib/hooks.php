@@ -80,8 +80,7 @@ function ckeditor_extended_htmlawed_config($hook_name, $entity_type, $return_val
 			$fulltag = explode(' ', $fulltag);
 
 			$tag = $fulltag[0];
-			$opts = explode('|', $fulltag[1]);
-
+			
 			$elements .= '+' . $tag;
 		}
 
