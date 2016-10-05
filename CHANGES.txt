@@ -1,6 +1,14 @@
 Version History
 ===============
 
+2.1 (2016-10-05):
+
+- added: inline editor view
+- added: retrieval of inline objects now preloads all based on prefix
+- added: support for asset_library plugin
+- changed: moved browse/upload page to resource view
+- fixed: default settings does not need to remove contextmenu
+
 2.0 (2016-01-05):
 
 - added: a plugin setting now controls if uploaded files will be overwritten
