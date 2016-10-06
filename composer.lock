@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a24ff2434edb43dd2242e51a1e2136c1",
-    "content-hash": "7f2de85fd0ddeaafce5332a41a65a1c8",
+    "hash": "0bd22e3757e14926921a4b4250156662",
+    "content-hash": "adb76a353c4b142eb31b8bec26a60d47",
     "packages": [
         {
             "name": "composer/installers",
@@ -122,12 +122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColdTrick/releases.git",
-                "reference": "a4ac414e013dc31e0f19c4f729488b86b285b263"
+                "reference": "e5b7e398f81b3e204574fbfda7b910527543bc2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ColdTrick/releases/zipball/a4ac414e013dc31e0f19c4f729488b86b285b263",
-                "reference": "a4ac414e013dc31e0f19c4f729488b86b285b263",
+                "url": "https://api.github.com/repos/ColdTrick/releases/zipball/e5b7e398f81b3e204574fbfda7b910527543bc2e",
+                "reference": "e5b7e398f81b3e204574fbfda7b910527543bc2e",
                 "shasum": ""
             },
             "type": "library",
@@ -141,7 +141,7 @@
                 "release",
                 "travis"
             ],
-            "time": "2016-03-11 12:51:42"
+            "time": "2016-10-05 09:32:34"
         },
         {
             "name": "coldtrick/sniffs",
