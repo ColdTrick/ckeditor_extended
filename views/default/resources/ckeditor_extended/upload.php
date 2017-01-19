@@ -16,11 +16,6 @@ if (empty($upload)) {
 	echo elgg_echo('ckeditor_extended:upload:no_upload');
 	return;
 }
-
-if (!get_resized_image_from_uploaded_file('upload', 200, 200)) {
-	echo elgg_echo('ckeditor_extended:upload:no_image');
-	return;
-}
 	
 $filename = $upload['name'];
 
@@ -42,6 +37,14 @@ if (elgg_get_plugin_setting('overwrite_uploaded_images', 'ckeditor_extended') ==
 	
 move_uploaded_file($upload['tmp_name'], $path . $filename);
  	
+if (!get_resized_image_from_existing_file($path . $filename, 200, 200)) {
+	echo elgg_echo('ckeditor_extended:upload:no_image');
+	
+	// remove uploaded file
+	unlink($path . $filename);
+	return;
+}
+
 $funcNum = elgg_extract('CKEditorFuncNum', $vars);
  		
 $url = elgg_normalize_url('/mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $filename . '&site_guid=' . $site_guid);
