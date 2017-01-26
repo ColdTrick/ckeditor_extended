@@ -1,6 +1,10 @@
 Version history
 ===============
 
+2.1.1 (2017-01-26):
+
+- fixed: workaround for core Elgg 2.3 bug
+
 2.1 (2016-10-05):
 
 - added: inline editor view
