@@ -1,3 +1,13 @@
+/**
+ * This module can be used to bind CKEditor to a textarea
+ * <code>
+ *	  require(['elgg/ckeditor'], function(editor) {
+ *	      editor.bind('textarea');
+ *	  });
+ * </code>
+ * 
+ * @module elgg/ckeditor
+ */
 define(function(require) {
 	var elgg = require('elgg');
 	require('elgg/init');
@@ -6,8 +16,8 @@ define(function(require) {
 	var CKEDITOR = require('ckeditor');
 	var config = require('elgg/ckeditor/config');
 	
-	CKEDITOR.plugins.addExternal('mediaembed', elgg.get_site_url() + 'mod/ckeditor_extended/vendors/plugins/mediaembed/', 'plugin.js');
 	CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_simplecache_url('elgg/ckeditor/blockimagepaste.js'), '');
+	CKEDITOR.plugins.addExternal('mediaembed', elgg.get_site_url() + 'mod/ckeditor_extended/vendors/plugins/mediaembed/', 'plugin.js');
 	
 	var elggCKEditor = {
 
@@ -72,19 +82,36 @@ define(function(require) {
 			} else {
 				$(target).ckeditorGet().destroy();
 				$(this).html(elgg.echo('ckeditor:visual'));
+				
+				elggCKEditor.toggleRequiredHelper($(target));
 			}
 		},
 
 		/**
 		 * Initializes the ckeditor module
 		 *
+		 * @param {Object} textarea DOM element passed by ckeditor on init
 		 * @return void
 		 */
 		init: function(textarea) {
 			// show the toggle-editor link which is hidden by default, so it will only show up if the editor is correctly loaded
 			$('.ckeditor-toggle-editor[href="#' + textarea.id + '"]').show();
+			
+			elggCKEditor.toggleRequiredHelper($(textarea));
 		},
 
+		toggleRequiredHelper: function($textarea) {
+			$helper_textarea = $textarea.nextAll('.ckeditor-extended-required-textarea');
+			
+			if ($helper_textarea.prop('disabled') == true) {
+				$helper_textarea.prop('disabled', false);
+
+				$helper_textarea.html($textarea.ckeditorGet().getData());
+			} else {
+				$helper_textarea.prop('disabled', true);
+			}
+		},
+		
 		/**
 		 * CKEditor has decided using width and height as attributes on images isn't
 		 * kosher and puts that in the style. This adds those back as attributes.
@@ -126,6 +153,14 @@ define(function(require) {
 	};
 
 	CKEDITOR.on('instanceReady', elggCKEditor.fixImageAttributes);
+	CKEDITOR.on('instanceReady', function(event) {
+		
+		event.editor.on('change', function(elem, twee) {
+			// using filter as there are multiple textareas with the same id
+			$('textarea').filter('#' + this.name).html(this.getData()).trigger('input');
+			
+		});
+	});
 
 	$(document).on('click', '.ckeditor-toggle-editor', elggCKEditor.toggleEditor);
 
