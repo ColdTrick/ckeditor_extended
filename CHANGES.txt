@@ -1,6 +1,10 @@
 Version history
 ===============
 
+2.2 (2017-03-24):
+
+- added: editor field now is html5 validated
+
 2.1.1 (2017-01-26):
 
 - fixed: workaround for core Elgg 2.3 bug
