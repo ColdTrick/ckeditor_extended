@@ -16,9 +16,6 @@ define(function(require) {
 	var CKEDITOR = require('ckeditor');
 	var config = require('elgg/ckeditor/config');
 	
-	CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_simplecache_url('elgg/ckeditor/blockimagepaste.js'), '');
-	CKEDITOR.plugins.addExternal('mediaembed', elgg.get_site_url() + 'mod/ckeditor_extended/vendors/plugins/mediaembed/', 'plugin.js');
-	
 	var elggCKEditor = {
 
 		/**

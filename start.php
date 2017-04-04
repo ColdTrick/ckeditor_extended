@@ -21,6 +21,10 @@ function ckeditor_extended_init() {
 	elgg_extend_view('css/elgg', 'css/ckeditor_extended.css');
 	elgg_extend_view('css/admin', 'css/ckeditor_extended.css');
 	
+	// extend JS
+	elgg_extend_view('elgg.js', 'js/ckeditor_extended/image_upload.js');
+	elgg_extend_view('elgg.js', 'js/ckeditor_extended/image_browse.js');
+	
 	// this way a simplecache JS file can be loaded from a .php file
 	elgg_register_simplecache_view('js/elgg/ckeditor/config.js');
 	
@@ -50,6 +54,7 @@ function ckeditor_extended_page_handler($page) {
 		case 'upload':
 			echo elgg_view_resource('ckeditor_extended/upload', [
 				'CKEditorFuncNum' => get_input('CKEditorFuncNum'),
+				'responseType' => get_input('responseType'),
 			]);
 			return true;
 		case 'browse':

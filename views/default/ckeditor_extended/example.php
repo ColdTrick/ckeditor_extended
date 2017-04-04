@@ -4,8 +4,7 @@
  */
 
 $plugin = elgg_extract('entity', $vars);
-
-if (!elgg_instanceof($plugin, 'object', 'plugin')) {
+if (!($plugin instanceof ElggPlugin)) {
 	return;
 }
 
@@ -14,6 +13,8 @@ if ($plugin->getID() !== 'ckeditor_extended') {
 }
 
 // show an example of your settings
-$example_content = elgg_view('input/longtext', ['value' => elgg_echo('ckeditor_extended:settings:example:description')]);
+$example_content = elgg_view('input/longtext', [
+	'value' => elgg_echo('ckeditor_extended:settings:example:description'),
+]);
 
 echo elgg_view_module('inline', elgg_echo('ckeditor_extended:settings:example'), $example_content);

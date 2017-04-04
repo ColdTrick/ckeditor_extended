@@ -1,12 +1,8 @@
 <?php
 
-gatekeeper();
+elgg_gatekeeper();
 
 $funcNum = elgg_extract('CKEditorFuncNum', $vars);
-$user_guid = elgg_get_logged_in_user_guid();
-$site_guid = elgg_get_site_entity()->getGUID();
-$path = ckeditor_extended_get_upload_path($user_guid);
-$dir = @opendir($path);
 
 $site_files = '';
 $user_files = '';
@@ -34,28 +30,47 @@ if (elgg_is_active_plugin('asset_library')) {
 }
 
 // user files
-if ($dir) {
+$user_guid = elgg_get_logged_in_user_guid();
+
+$fs = new CKEditorFilestore();
+$path = elgg_get_data_path() . $fs->getUploadPath($user_guid) . DIRECTORY_SEPARATOR;
+$dir = @opendir($path);
+
+$fh = ckeditor_extended_get_file_handler($user_guid);
+if (!empty($fh) && !empty($dir)) {
+	
 	while (($file = readdir($dir)) !== false) {
-		if (!is_dir($file)) {
-			$src = 'mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid;
-			$img = elgg_view('output/img', [
-				'src' => $src,
-				'alt' => $file,
-			]);
-			
-			$text = elgg_view('output/url',[
-				'text' => elgg_view_icon('delete-alt-hover'),
-				'href' => 'action/ckeditor_extended/delete?guid=' . $user_guid . '&name=' . $file . '&site_guid=' . $site_guid,
-				'class' => 'float-alt elgg-discoverable ckeditor-delete-file',
-				'title' => elgg_echo('delete'),
-			]);
-			$text .= $file;
-			
-			$user_files .= elgg_format_element('li', [
-				'class' => 'elgg-discover elgg-divide-bottom',
-				'data-embed-url' => elgg_get_site_url() . 'mod/ckeditor_extended/pages/thumbnail.php?guid=' . $user_guid . '&site_guid=' . $site_guid . '&name=' . $file,
-			], elgg_view_image_block($img, $text, ['class' => 'pam']));
+		
+		if (!is_file($path . $file)) {
+			continue;
 		}
+		
+		// set filename on handler
+		$fh->setFilename($file);
+		
+		// generate inline URL
+		$src = elgg_get_inline_url($fh);
+		$img = elgg_view('output/img', [
+			'src' => $src,
+			'alt' => $file,
+		]);
+		
+		$text = elgg_view('output/url',[
+			'text' => elgg_view_icon('delete-alt-hover'),
+			'href' => elgg_http_add_url_query_elements('action/ckeditor_extended/delete', [
+				'guid' => $user_guid,
+				'name' => $file,
+			]),
+			'is_action' => true,
+			'class' => 'float-alt elgg-discoverable ckeditor-delete-file',
+			'title' => elgg_echo('delete'),
+		]);
+		$text .= $file;
+		
+		$user_files .= elgg_format_element('li', [
+			'class' => 'elgg-discover elgg-divide-bottom',
+			'data-embed-url' => $src,
+		], elgg_view_image_block($img, $text, ['class' => 'pam']));
 	}
 }
 
@@ -89,6 +104,6 @@ $body .= elgg_format_element('script', [], 'require(["ckeditor_extended/browse_f
 $body .= elgg_view('page/elements/foot');
 
 echo elgg_view('page/elements/html', [
-	'head' => elgg_view('page/elements/head'),
+	'head' => elgg_view('page/elements/head', ['title' => '']),
 	'body' => $body,
 ]);

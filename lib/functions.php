@@ -1,31 +1,9 @@
 <?php
+use League\Flysystem\Plugin\ForcedCopy;
+
 /**
  * All functions bundled here
  */
-
-/**
- * Returns upload path for a given user
- *
- * @param int $user_guid guid of the user
- *
- * @return string
- */
-function ckeditor_extended_get_upload_path($user_guid) {
-	$bucket_size = 500;
-	
-	if (empty($user_guid)) {
-		$user_guid = elgg_get_logged_in_user_guid();
-	}
-	
-	if (empty($user_guid)) {
-		return false;
-	}
-	
-	$site_guid = elgg_get_site_entity()->getGUID();
-	$lower_bound = (int) max(floor($user_guid / $bucket_size) * $bucket_size, 1);
-	
-	return elgg_get_data_path() . 'ckeditor_upload/' . $site_guid . '/' . $lower_bound . '/' . $user_guid . '/';
-}
 
 /**
  * Returns the object based on the id
@@ -77,4 +55,62 @@ function ckeditor_extended_get_inline_object($id, $create = false) {
 	$cached[$prefix][$id] = $object;
 	
 	return $object;
+}
+
+/**
+ * Build a reponse for the CKEditor upload file handler
+ *
+ * @param array $params reponse params
+ *
+ * @return string
+ */
+function ckeditor_extended_get_file_upload_response($params = []) {
+	
+	if (elgg_extract('response_type', $params) === 'json') {
+		return json_encode([
+			'uploaded' => (int) elgg_extract('uploaded', $params),
+			'filename' => elgg_extract('filename', $params),
+			'url' => elgg_extract('url', $params),
+			'error' => [
+				'message' => elgg_extract('error', $params),
+			]
+		]);
+	}
+	
+	// non json formatted response
+	$funcNum = elgg_extract('funcNum', $params);
+	$url = elgg_extract('url', $params);
+	$error = elgg_extract('error', $params);
+	
+	return elgg_format_element('script',
+		['type' => 'text/javascript'],
+		"window.parent.CKEDITOR.tools.callFunction({$funcNum}, '{$url}', '{$error}');"
+	);
+}
+
+/**
+ * Create a file handler for use with uploaded images
+ *
+ * @param int $user_guid the user to get file handler for
+ *
+ * @return false|ElggFile
+ */
+function ckeditor_extended_get_file_handler($user_guid = 0) {
+	
+	$user_guid = (int) $user_guid;
+	if (empty($user_guid)) {
+		$user_guid = elgg_get_logged_in_user_guid();
+	}
+	
+	if ($user_guid < 1) {
+		return false;
+	}
+	
+	$fs = new CKEditorFilestore();
+	
+	$fh = new ElggFile();
+	$fh->owner_guid = $user_guid;
+	$fh->setFilestore($fs);
+	
+	return $fh;
 }
