@@ -66,8 +66,10 @@ function ckeditor_extended_get_inline_object($id, $create = false) {
  */
 function ckeditor_extended_get_file_upload_response($params = []) {
 	
+	$response = '';
+	
 	if (elgg_extract('response_type', $params) === 'json') {
-		return json_encode([
+		$response = json_encode([
 			'uploaded' => (int) elgg_extract('uploaded', $params),
 			'filename' => elgg_extract('filename', $params),
 			'url' => elgg_extract('url', $params),
@@ -75,17 +77,19 @@ function ckeditor_extended_get_file_upload_response($params = []) {
 				'message' => elgg_extract('error', $params),
 			]
 		]);
+	} else {
+		// non json formatted response
+		$funcNum = elgg_extract('funcNum', $params);
+		$url = elgg_extract('url', $params);
+		$error = elgg_extract('error', $params);
+		
+		$response = elgg_format_element('script',
+			['type' => 'text/javascript'],
+			"window.parent.CKEDITOR.tools.callFunction({$funcNum}, '{$url}', '{$error}');"
+		);
 	}
 	
-	// non json formatted response
-	$funcNum = elgg_extract('funcNum', $params);
-	$url = elgg_extract('url', $params);
-	$error = elgg_extract('error', $params);
-	
-	return elgg_format_element('script',
-		['type' => 'text/javascript'],
-		"window.parent.CKEDITOR.tools.callFunction({$funcNum}, '{$url}', '{$error}');"
-	);
+	return elgg_trigger_plugin_hook('upload_response', 'ckeditor_extended', $params, $response);
 }
 
 /**
