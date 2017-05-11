@@ -1,6 +1,12 @@
 Version history
 ===============
 
+3.0 (2017-05-11):
+
+- added: CKEditor 4.6
+- added: support for drag&drop images in editor
+- changed: increased minimal Elgg version to 2.3
+
 2.2 (2017-03-24):
 
 - added: editor field now is html5 validated
