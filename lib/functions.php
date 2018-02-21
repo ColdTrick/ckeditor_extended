@@ -1,6 +1,4 @@
 <?php
-use League\Flysystem\Plugin\ForcedCopy;
-
 /**
  * All functions bundled here
  */

@@ -102,6 +102,14 @@ echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:htmlawed:tit
 // show an example of your settings
 $example_content = elgg_view_field([
 	'#type' => 'longtext',
+	'#label' => 'default',
+	'value' => elgg_echo('ckeditor_extended:settings:example:description'),
+]);
+
+$example_content .= elgg_view_field([
+	'#type' => 'longtext',
+	'#label' => 'simple',
+	'editor_type' => 'simple',
 	'value' => elgg_echo('ckeditor_extended:settings:example:description'),
 ]);
 
