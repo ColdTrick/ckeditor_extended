@@ -2,7 +2,7 @@
 
 elgg_gatekeeper();
 
-$funcNum = elgg_extract('CKEditorFuncNum', $vars);
+$funcNum = elgg_extract('CKEditorFuncNum', $vars, get_input('CKEditorFuncNum'));
 
 $site_files = '';
 $user_files = '';

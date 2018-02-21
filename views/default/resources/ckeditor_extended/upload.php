@@ -5,8 +5,8 @@ elgg_gatekeeper();
 $user_guid = elgg_get_logged_in_user_guid();
 
 $response_params = [
-	'response_type' => elgg_extract('responseType', $vars),
-	'funcNum' => elgg_extract('CKEditorFuncNum', $vars),
+	'response_type' => elgg_extract('responseType', $vars, get_input('responseType')),
+	'funcNum' => elgg_extract('CKEditorFuncNum', $vars, get_input('CKEditorFuncNum')),
 ];
 
 $upload = elgg_get_uploaded_files('upload');

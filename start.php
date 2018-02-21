@@ -15,8 +15,7 @@ elgg_register_event_handler('init', 'system', 'ckeditor_extended_init');
  * @return void
  */
 function ckeditor_extended_init() {
-	elgg_register_page_handler('ckeditor', 'ckeditor_extended_page_handler');
-	
+
 	// extend CSS
 	elgg_extend_view('css/elgg', 'css/ckeditor_extended.css');
 	elgg_extend_view('css/admin', 'css/ckeditor_extended.css');
@@ -36,32 +35,4 @@ function ckeditor_extended_init() {
 	elgg_register_plugin_hook_handler('config', 'htmlawed', 'ckeditor_extended_htmlawed_config');
 	
 	elgg_register_plugin_hook_handler('register', 'menu:longtext', 'ckeditor_extended_longtext_menu');
-}
-
-/**
- * Handles the ckeditor pages
- *
- * @param array $page requested page
- *
- * @return boolean
- */
-function ckeditor_extended_page_handler($page) {
-	switch($page[0]){
-		case 'upload':
-			echo elgg_view_resource('ckeditor_extended/upload', [
-				'CKEditorFuncNum' => get_input('CKEditorFuncNum'),
-				'responseType' => get_input('responseType'),
-			]);
-			return true;
-		case 'browse':
-			echo elgg_view_resource('ckeditor_extended/browse', [
-				'CKEditorFuncNum' => get_input('CKEditorFuncNum'),
-			]);
-			return true;
-		case 'download':
-			set_input('user_guid', $page[1]);
-			set_input('file_name', $page[2]);
-			include(dirname(__FILE__) . '/pages/download.php');
-			return true;
-	}
 }

@@ -13,6 +13,20 @@ return [
 		'overwrite_uploaded_images' => 'yes',
 		
 	],
+	'routes' => [
+		'default:ckeditor_extended:upload' => [
+			'path' => '/ckeditor_extended/upload',
+			'resource' => 'ckeditor_extended/upload',
+		],
+		'default:ckeditor_extended:browse' => [
+			'path' => '/ckeditor_extended/browse',
+			'resource' => 'ckeditor_extended/browse',
+		],
+		'default:ckeditor_extended:download' => [
+			'path' => '/ckeditor_extended/download/{user_guid}/{file_name}',
+			'resource' => 'ckeditor_extended/download',
+		],
+	],
 	'views' => [
 		'default' => [
 			'ckeditor.js' => __DIR__ . '/vendors/ckeditor/ckeditor.js',
