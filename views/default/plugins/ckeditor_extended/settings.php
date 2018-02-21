@@ -15,11 +15,6 @@ $noyes_options = [
 
 $yesno_options = array_reverse($noyes_options, true);
 
-$show_html_toggler_options = [
-	'yes' => elgg_echo('option:yes'),
-	'admin_only' => elgg_echo('ckeditor_extended:settings:show_html_toggler:option:admin_only'),
-	'no' => elgg_echo('option:no'),
-];
 
 $editor_config = $plugin->editor_config;
 if (empty($editor_config)) {
@@ -43,37 +38,47 @@ echo elgg_view_field([
 	'#label' => elgg_echo('ckeditor_extended:settings:show_html_toggler'),
 	'name' => 'params[show_html_toggler]',
 	'value' => $plugin->show_html_toggler,
-	'options_values' => $show_html_toggler_options,
+	'options_values' => [
+		'yes' => elgg_echo('option:yes'),
+		'admin_only' => elgg_echo('ckeditor_extended:settings:show_html_toggler:option:admin_only'),
+		'no' => elgg_echo('option:no'),
+	],
 ]);
 
 echo elgg_view_field([
-	'#type' => 'select',
+	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:image_upload_allowed'),
 	'#help' => elgg_echo('ckeditor_extended:settings:image_upload_allowed:help'),
 	'name' => 'params[image_upload_allowed]',
-	'value' => $plugin->image_upload_allowed,
-	'options_values' => $noyes_options,
+	'checked' => $plugin->image_upload_allowed === 'yes',
+	'switch' => true,
+	'default' => 'no',
+	'value' => 'yes',
 ]);
 
 echo elgg_view_field([
-	'#type' => 'select',
+	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:image_upload_browse'),
 	'#help' => elgg_echo('ckeditor_extended:settings:image_upload_browse:help'),
 	'name' => 'params[image_upload_browse]',
-	'value' => $plugin->image_upload_browse,
-	'options_values' => $noyes_options,
+	'checked' => $plugin->image_upload_browse === 'yes',
+	'switch' => true,
+	'default' => 'no',
+	'value' => 'yes',
 ]);
 
 echo elgg_view_field([
-	'#type' => 'select',
+	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:overwrite_uploaded_images'),
 	'#help' => elgg_echo('ckeditor_extended:settings:overwrite_uploaded_images:help'),
 	'name' => 'params[overwrite_uploaded_images]',
-	'value' => $plugin->overwrite_uploaded_images,
-	'options_values' => $yesno_options,
+	'checked' => $plugin->overwrite_uploaded_images === 'yes',
+	'switch' => true,
+	'default' => 'no',
+	'value' => 'yes',
 ]);
 
-// HTMLAwed settings
+// HTMLawed settings
 $htmlawed_settings = elgg_view('output/longtext', [
 	'value' => elgg_echo('ckeditor_extended:settings:htmlawed:info'),
 ]);
@@ -92,4 +97,4 @@ $htmlawed_settings .= elgg_view_field([
 	'value' => $plugin->htmlawed_schemes,
 ]);
 
-echo elgg_view_module('inline', elgg_echo('ckeditor_extended:settings:htmlawed:title'), $htmlawed_settings);
+echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:htmlawed:title'), $htmlawed_settings);

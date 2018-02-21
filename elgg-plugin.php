@@ -7,7 +7,10 @@ if (is_dir(__DIR__ . '/vendor')) {
 
 return [
 	'settings' => [
-// 		'generate_username_from_email' => 'no',
+		'show_html_toggler' => 'yes',
+		'image_upload_allowed' => 'no',
+		'image_upload_browse' => 'no',
+		'overwrite_uploaded_images' => 'yes',
 		
 	],
 	'views' => [
