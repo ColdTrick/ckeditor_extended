@@ -37,9 +37,6 @@ function ckeditor_extended_init() {
 	elgg_register_plugin_hook_handler('config', 'htmlawed', 'ckeditor_extended_htmlawed_config');
 	
 	elgg_register_plugin_hook_handler('register', 'menu:longtext', 'ckeditor_extended_longtext_menu');
-	
-	elgg_register_action('ckeditor_extended/delete', dirname(__FILE__) . '/actions/delete.php');
-	elgg_register_action('ckeditor_extended/inline_edit', dirname(__FILE__) . '/actions/inline_edit.php', 'admin');
 }
 
 /**
