@@ -15,15 +15,15 @@ return [
 	],
 	'routes' => [
 		'default:ckeditor_extended:upload' => [
-			'path' => '/ckeditor_extended/upload',
+			'path' => '/ckeditor/upload',
 			'resource' => 'ckeditor_extended/upload',
 		],
 		'default:ckeditor_extended:browse' => [
-			'path' => '/ckeditor_extended/browse',
+			'path' => '/ckeditor/browse',
 			'resource' => 'ckeditor_extended/browse',
 		],
 		'default:ckeditor_extended:download' => [
-			'path' => '/ckeditor_extended/download/{user_guid}/{file_name}',
+			'path' => '/ckeditor/download/{user_guid}/{file_name}',
 			'resource' => 'ckeditor_extended/download',
 		],
 	],
