@@ -98,3 +98,11 @@ $htmlawed_settings .= elgg_view_field([
 ]);
 
 echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:htmlawed:title'), $htmlawed_settings);
+
+// show an example of your settings
+$example_content = elgg_view_field([
+	'#type' => 'longtext',
+	'value' => elgg_echo('ckeditor_extended:settings:example:description'),
+]);
+
+echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:example'), $example_content);

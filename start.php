@@ -29,7 +29,6 @@ function ckeditor_extended_init() {
 	elgg_register_simplecache_view('js/elgg/ckeditor/config.js');
 	
 	// extend view
-	elgg_extend_view('forms/plugins/settings/save', 'ckeditor_extended/example');
 	elgg_extend_view('input/longtext', 'ckeditor_extended/textarea');
 	
 	// plugin hooks
