@@ -152,10 +152,16 @@ define(function(require) {
 	CKEDITOR.on('instanceReady', elggCKEditor.fixImageAttributes);
 	CKEDITOR.on('instanceReady', function(event) {
 		
-		event.editor.on('change', function(elem, twee) {
-			// using filter as there are multiple textareas with the same id
-			$('textarea').filter('#' + this.name).html(this.getData()).trigger('input');
+		event.editor.on('change', function(chevent) {
+			var $replacement = $('<textarea></textarea>')
+				.attr('id', this.name + '-required')
+				.prop('disabled', true)
+				.prop('required', true)
+				.addClass('ckeditor-extended-required-textarea')
+				.html(this.getData());
 			
+			// using filter as there are multiple textareas with the same id
+			$('textarea').filter('#' + this.name + '-required').replaceWith($replacement).trigger('input');
 		});
 	});
 
