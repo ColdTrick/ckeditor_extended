@@ -13,6 +13,6 @@ if (!elgg_extract('required', $vars)) {
 echo elgg_format_element('textarea', [
 	'required' => true,
 	'class' => 'ckeditor-extended-required-textarea',
-	'id' => "{$id}-required",
+	'id' => $id,
 	'disabled' => true,
 ], elgg_extract('value', $vars));

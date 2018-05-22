@@ -154,14 +154,13 @@ define(function(require) {
 		
 		event.editor.on('change', function(chevent) {
 			var $replacement = $('<textarea></textarea>')
-				.attr('id', this.name + '-required')
-				.prop('disabled', true)
-				.prop('required', true)
+				.attr('id', this.name)
+				.attr('required', 'required')
 				.addClass('ckeditor-extended-required-textarea')
 				.html(this.getData());
 			
 			// using filter as there are multiple textareas with the same id
-			$('textarea').filter('#' + this.name + '-required').replaceWith($replacement).trigger('input');
+			$('#' + this.name + '.ckeditor-extended-required-textarea').replaceWith($replacement).trigger('input');
 		});
 	});
 
