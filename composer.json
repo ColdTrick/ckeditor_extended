@@ -3,7 +3,7 @@
 	"description": "offers you the ability to change the configuration of the editor",
 	"type": "elgg-plugin",
 	"keywords": ["elgg", "plugin", "wysiwyg", "ckeditor"],
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"support": {
 		"source": "https://github.com/ColdTrick/ckeditor_extended",
 		"issues": "https://github.com/ColdTrick/ckeditor_extended/issues"
