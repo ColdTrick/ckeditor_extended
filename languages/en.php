@@ -3,6 +3,12 @@
 return array(
 	
 	// plugin settings
+	'ckeditor_extended:settings:editor_version' => "Please select a CKEditor version",
+	'ckeditor_extended:settings:editor_version:help' => "Switching between versions can break the configuration, please check the configuration after switching",
+	'ckeditor_extended:settings:editor_version:4.6.2' => "v4.6.2 (default)",
+	'ckeditor_extended:settings:editor_version:4.7.3' => "v4.7.3",
+	'ckeditor_extended:settings:editor_version:4.8.0' => "v4.8.0",
+	'ckeditor_extended:settings:editor_version:4.9.2' => "v4.9.2",
 	'ckeditor_extended:settings:editor_config' => "Please enter the new settings below",
 	'ckeditor_extended:settings:link' => "Check out the CKEditor website for all the available settings",
 	'ckeditor_extended:settings:image_upload_allowed' => "Allow image upload by using the editor",

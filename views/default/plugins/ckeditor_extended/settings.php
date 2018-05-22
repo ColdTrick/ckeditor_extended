@@ -27,6 +27,20 @@ if (empty($editor_config)) {
 }
 
 echo elgg_view_field([
+	'#type' => 'select',
+	'#label' => elgg_echo('ckeditor_extended:settings:editor_version'),
+	'#help' => elgg_echo('ckeditor_extended:settings:editor_version:help'),
+	'name' => 'params[editor_version]',
+	'value' => $plugin->editor_version,
+	'options_values' => [
+		'4.6.2' => elgg_echo('ckeditor_extended:settings:editor_version:4.6.2'),
+		'4.7.3' => elgg_echo('ckeditor_extended:settings:editor_version:4.7.3'),
+		'4.8.0' => elgg_echo('ckeditor_extended:settings:editor_version:4.8.0'),
+		'4.9.2' => elgg_echo('ckeditor_extended:settings:editor_version:4.9.2'),
+	],
+]);
+
+echo elgg_view_field([
 	'#type' => 'plaintext',
 	'#label' => elgg_echo('ckeditor_extended:settings:editor_config'),
 	'#help' => elgg_view('output/url', [

@@ -7,7 +7,35 @@ require_once(dirname(__FILE__) . '/lib/hooks.php');
 require_once(dirname(__FILE__) . '/lib/functions.php');
 
 // register default Elgg events
+elgg_register_event_handler('plugins_boot', 'system', 'ckeditor_extended_boot');
 elgg_register_event_handler('init', 'system', 'ckeditor_extended_init');
+
+/**
+ * Called during plugins_boot
+ *
+ * @return void
+ */
+function ckeditor_extended_boot() {
+	$editor_version = elgg_get_plugin_setting('editor_version', 'ckeditor_extended');
+	$supported_versions = [
+		'4.6.2',
+		'4.7.3',
+		'4.8.0',
+		'4.9.2',
+	];
+	if (!in_array($editor_version, $supported_versions)) {
+		return;
+	}
+	
+	$view_specs = [
+		'default' => [
+			'ckeditor.js' => __DIR__ . "/vendors/ckeditor/{$editor_version}/ckeditor.js",
+			'ckeditor/' => __DIR__ . "/vendors/ckeditor/{$editor_version}/",
+			'jquery.ckeditor.js' => __DIR__ . "/vendors/ckeditor/{$editor_version}/adapters/jquery.js",
+		],
+	];
+	_elgg_services()->views->mergeViewsSpec($view_specs);
+}
 
 /**
  * Gets called when the system initializes
