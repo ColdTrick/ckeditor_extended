@@ -1,6 +1,12 @@
 Version history
 ===============
 
+3.1 (2018-05-31):
+
+- added: CKEditor version selector for 4.6, 4.7, 4.8 and 4.9
+- changed: moved ckeditor files to version location
+- fixed: using required with Edge HTML 15 not working
+
 3.0 (2017-05-11):
 
 - added: CKEditor 4.6
