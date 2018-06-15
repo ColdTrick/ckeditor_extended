@@ -1,6 +1,10 @@
 Version history
 ===============
 
+3.2 (2018-06-15):
+
+- added: image2 ckeditor plugin
+
 3.1 (2018-05-31):
 
 - added: CKEditor version selector for 4.6, 4.7, 4.8 and 4.9
