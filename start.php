@@ -16,9 +16,15 @@ elgg_register_event_handler('init', 'system', 'ckeditor_extended_init');
  * @return void
  */
 function ckeditor_extended_boot() {
+	
+	if (elgg_get_config('system_cache_loaded')) {
+		// view location is cached, no need to register it
+		return;
+	}
+	
 	$editor_version = elgg_get_plugin_setting('editor_version', 'ckeditor_extended');
 	$supported_versions = [
-		'4.6.2',
+		// '4.6.2', // technically this is supported but it's also the default in views.php
 		'4.7.3',
 		'4.8.0',
 		'4.9.2',

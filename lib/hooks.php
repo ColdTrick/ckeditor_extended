@@ -18,6 +18,7 @@ function ckeditor_extended_plugins_settings_save_action_hook($hook, $type, $retu
 	$plugin_id = get_input('plugin_id');
 	if ($plugin_id === 'ckeditor_extended') {
 		elgg_invalidate_simplecache();
+		elgg_reset_system_cache(); // needed for version switching
 	}
 }
 
