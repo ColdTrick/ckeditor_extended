@@ -1,6 +1,10 @@
 Version history
 ===============
 
+3.2.1 (2018-06-28):
+
+- fixed: only load view spec when not provided by system cache
+
 3.2 (2018-06-15):
 
 - added: image2 ckeditor plugin
