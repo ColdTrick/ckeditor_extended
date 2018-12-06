@@ -28,6 +28,6 @@ class Bootstrap extends DefaultPluginBootstrap {
 			}
 		});
 		$hooks->registerHandler('config', 'htmlawed', '\ColdTrick\CKeditorExtended\HTMLawed::extendConfig');
-		$hooks->registerHandler('register', 'menu:longtext', '\ColdTrick\CKeditorExtended\Menus::registerLongtextMenu');
+		$hooks->registerHandler('register', 'menu:longtext', '\ColdTrick\CKeditorExtended\Menus::registerLongtextMenu', 999);
 	}
 }
