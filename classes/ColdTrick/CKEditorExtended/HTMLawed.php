@@ -1,12 +1,12 @@
 <?php
 
-namespace ColdTrick\CKeditorExtended;
+namespace ColdTrick\CKEditorExtended;
 
 /**
  * HTMLawed
  *
  * @package    ColdTrick
- * @subpackage CKeditorExtended
+ * @subpackage CKEditorExtended
  */
 class HTMLawed {
 	

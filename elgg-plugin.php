@@ -1,6 +1,6 @@
 <?php
 
-use ColdTrick\CKeditorExtended\Bootstrap;
+use ColdTrick\CKEditorExtended\Bootstrap;
 
 require_once(dirname(__FILE__) . '/lib/functions.php');
 

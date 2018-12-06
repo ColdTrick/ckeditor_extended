@@ -1,12 +1,12 @@
 <?php
 
-namespace ColdTrick\CKeditorExtended;
+namespace ColdTrick\CKEditorExtended;
 
 /**
  * Menus
  *
  * @package    ColdTrick
- * @subpackage CKeditorExtended
+ * @subpackage CKEditorExtended
  */
 class Menus {
 	
