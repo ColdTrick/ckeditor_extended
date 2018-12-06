@@ -95,7 +95,7 @@ function ckeditor_extended_get_file_upload_response($params = []) {
  *
  * @param int $user_guid the user to get file handler for
  *
- * @return false|ElggFile
+ * @return false|CKEditorFile
  */
 function ckeditor_extended_get_file_handler($user_guid = 0) {
 	
@@ -108,11 +108,8 @@ function ckeditor_extended_get_file_handler($user_guid = 0) {
 		return false;
 	}
 	
-	$fs = new CKEditorFilestore();
-	
-	$fh = new ElggFile();
+	$fh = new CKEditorFile();
 	$fh->owner_guid = $user_guid;
-	$fh->setFilestore($fs);
 	
 	return $fh;
 }
