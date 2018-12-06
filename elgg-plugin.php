@@ -2,7 +2,6 @@
 
 use ColdTrick\CKeditorExtended\Bootstrap;
 
-require_once(dirname(__FILE__) . '/lib/hooks.php');
 require_once(dirname(__FILE__) . '/lib/functions.php');
 
 $composer_path = '';

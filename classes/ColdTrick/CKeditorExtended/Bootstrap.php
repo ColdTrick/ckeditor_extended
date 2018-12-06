@@ -22,8 +22,12 @@ class Bootstrap extends DefaultPluginBootstrap {
 		
 		// register plugin hook handlers
 		$hooks = $this->elgg()->hooks;
-		$hooks->registerHandler('action:validate', 'plugins/settings/save', 'ckeditor_extended_plugins_settings_save_action_hook');
-		$hooks->registerHandler('config', 'htmlawed', 'ckeditor_extended_htmlawed_config');
-		$hooks->registerHandler('register', 'menu:longtext', 'ckeditor_extended_longtext_menu');
+		$hooks->registerHandler('action:validate', 'plugins/settings/save', function() {
+			if (get_input('plugin_id') === 'ckeditor_extended') {
+				elgg_invalidate_simplecache();
+			}
+		});
+		$hooks->registerHandler('config', 'htmlawed', '\ColdTrick\CKeditorExtended\Menus::extendConfig');
+		$hooks->registerHandler('register', 'menu:longtext', '\ColdTrick\CKeditorExtended\Menus::registerLongtextMenu');
 	}
 }
