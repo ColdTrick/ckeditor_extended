@@ -27,7 +27,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 				elgg_invalidate_simplecache();
 			}
 		});
-		$hooks->registerHandler('config', 'htmlawed', '\ColdTrick\CKeditorExtended\Menus::extendConfig');
+		$hooks->registerHandler('config', 'htmlawed', '\ColdTrick\CKeditorExtended\HTMLawed::extendConfig');
 		$hooks->registerHandler('register', 'menu:longtext', '\ColdTrick\CKeditorExtended\Menus::registerLongtextMenu');
 	}
 }
