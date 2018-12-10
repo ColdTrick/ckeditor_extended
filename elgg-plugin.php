@@ -32,13 +32,6 @@ return [
 			'resource' => 'ckeditor_extended/download',
 		],
 	],
-	'views' => [
-		'default' => [
-			'ckeditor.js' => __DIR__ . '/vendors/ckeditor/ckeditor.js',
-			'ckeditor/' => __DIR__ . '/vendors/ckeditor/',
-			'jquery.ckeditor.js' => __DIR__ . '/vendors/ckeditor/adapters/jquery.js',
-		],
-	],
 	'actions' => [
 		'ckeditor_extended/delete' => [],
 		'ckeditor_extended/change_category' => ['access' => 'admin'],
