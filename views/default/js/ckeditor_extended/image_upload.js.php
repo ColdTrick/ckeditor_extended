@@ -36,7 +36,7 @@ require(['jquery', 'elgg'], function($, elgg) {
 		}
 
 		// set upload url
-		returnValue.filebrowserImageUploadUrl = ((elgg.is_logged_in()) ? elgg.normalize_url('ckeditor/upload') : false);
+		returnValue.filebrowserImageUploadUrl = ((elgg.is_logged_in()) ? elgg.normalize_url('ckeditor/upload') + '?uploading' : false);
 		
 		return returnValue;
 	});
