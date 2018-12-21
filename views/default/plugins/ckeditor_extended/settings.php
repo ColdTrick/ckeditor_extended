@@ -8,13 +8,11 @@
 /* @var $plugin ElggPlugin */
 $plugin = elgg_extract('entity', $vars);
 
-$noyes_options = [
-	'no' => elgg_echo('option:no'),
-	'yes' => elgg_echo('option:yes'),
-];
-
-$yesno_options = array_reverse($noyes_options, true);
-
+echo elgg_view_field([
+	'#type' => 'hidden',
+	'name' => 'flush_cache',
+	'value' => 1,
+]);
 
 $editor_config = $plugin->editor_config;
 if (empty($editor_config)) {
