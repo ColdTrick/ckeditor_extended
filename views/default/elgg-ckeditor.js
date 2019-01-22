@@ -67,6 +67,15 @@ define(function (require) {
 			elgg.register_hook_handler('prepare', 'ckeditor', function (hook, type, params, CKEDITOR) {
 				CKEDITOR.plugins.addExternal('blockimagepaste', elgg.get_simplecache_url('elgg/ckeditor/blockimagepaste.js'), '');
 				CKEDITOR.on('instanceReady', elggCKEditor.fixImageAttributes);
+				CKEDITOR.on('instanceReady', function(event) {
+					
+					event.editor.on('change', function() {
+						// using filter as there are multiple textareas with the same id
+						$('textarea').filter('#' + this.name).html(this.getData()).trigger('input');
+						
+					});
+				});
+				
 				return CKEDITOR;
 			});
 			elgg.register_hook_handler('embed', 'editor', function (hook, type, params, value) {
@@ -112,6 +121,8 @@ define(function (require) {
 				} else {
 					$(this).ckeditorGet().destroy();
 					$(this).data('toggler').html(elgg.echo('ckeditor:visual'));
+					
+					elggCKEditor.toggleRequiredHelper($(this));
 				}
 			});
 		},
@@ -193,6 +204,19 @@ define(function (require) {
 					$(textarea).ckeditorGet().updateElement();
 				}
 			});
+			
+			elggCKEditor.toggleRequiredHelper($(textarea));
+		},
+		
+		toggleRequiredHelper: function($textarea) {
+			$helper_textarea = $textarea.parents('.elgg-field-input').find('.ckeditor-extended-required-textarea').eq(0);
+			if ($helper_textarea.prop('disabled') == true) {
+				$helper_textarea.prop('disabled', false);
+
+				$helper_textarea.html($textarea.ckeditorGet().getData());
+			} else {
+				$helper_textarea.prop('disabled', true);
+			}
 		},
 
 		/**
