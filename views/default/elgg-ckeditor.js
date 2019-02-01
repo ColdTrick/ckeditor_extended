@@ -70,8 +70,14 @@ define(function (require) {
 				CKEDITOR.on('instanceReady', function(event) {
 					
 					event.editor.on('change', function() {
+						var $replacement = $('<textarea></textarea>')
+							.attr('id', this.name)
+							.attr('required', 'required')
+							.addClass('ckeditor-extended-required-textarea')
+							.html(this.getData());
+						
 						// using filter as there are multiple textareas with the same id
-						$('textarea').filter('#' + this.name).html(this.getData()).trigger('input');
+						$('#' + this.name + '.ckeditor-extended-required-textarea').replaceWith($replacement).trigger('input');
 						
 					});
 				});
