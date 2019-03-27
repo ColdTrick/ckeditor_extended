@@ -1,6 +1,17 @@
 Version history
 ===============
 
+4.0 (2019-03-27):
+
+- added: mediaembed plugin
+- changed: ckeditor uses custom file object for custom filestore usage
+- changed: minimal requirements now need Elgg 3.0
+- changed: moved hooks to class functions
+- changed: moved start file code into Bootstrap class
+- changed: no longer provide a custom ckeditor version
+- changed: replaced pagehandler function with route definitions
+- changed: simplified cache reset on plugin settings save
+
 3.0 (2017-05-11):
 
 - added: CKEditor 4.6
