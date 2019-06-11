@@ -1,6 +1,10 @@
 Version history
 ===============
 
+3.2.2 (2019-06-11):
+
+- several small chores/fixes
+
 3.2.1 (2018-06-28):
 
 - fixed: only load view spec when not provided by system cache
