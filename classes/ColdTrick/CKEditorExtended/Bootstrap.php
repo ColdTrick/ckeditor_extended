@@ -35,13 +35,23 @@ class Bootstrap extends DefaultPluginBootstrap {
 	 */
 	protected function extendCKEditorViews() {
 		
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/filetools/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/lineutils/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/notificationaggregator/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/uploadimage/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/uploadwidget/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/widget/plugin.js');
-		elgg_extend_view('ckeditor/ckeditor.js', 'ckeditor/plugins/widgetselection/plugin.js');
+		// preload extra plugins
+		$extras = [
+			'image2',
+			'mediaembed',
+			'autogrow',
+			'mentions',
+			'panelbutton',
+			'textmatch',
+			'autocomplete',
+			'textwatcher',
+			'ajax',
+			'xml',
+		];
+		
+		foreach ($extras as $extra) {
+			elgg_extend_view('ckeditor/ckeditor.js', "ckeditor/plugins/{$extra}/plugin.js");
+		}
 		
 		$languages = ['en'];
 		$languages[] = get_current_language();
@@ -51,6 +61,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 			'filetools',
 			'uploadwidget',
 			'widget',
+			'image2',
 		];
 		
 		foreach ($languages as $lang) {
