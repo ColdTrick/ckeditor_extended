@@ -13,12 +13,12 @@
 }
 
 .ckeditor-extended-required-textarea {
-	border: 0;
-	height: 0;
-	width: 0;
-	padding: 0;
-	margin: 0;
-	position: absolute;
+	border: 0 !important;
+	height: 0 !important;
+	width: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	position: absolute !important;
 }
 
 .ckeditor-extended-required-textarea:invalid {
