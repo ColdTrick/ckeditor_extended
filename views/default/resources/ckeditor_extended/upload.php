@@ -68,13 +68,24 @@ try {
 	$fh->open('write');
 	$fh->close();
 	
+	// copy first as we can only rotate with a correct image extension
+	$temp_file = elgg_get_temp_file();
+	$temp_file->setFilename(uniqid() . basename($fh->getFilenameOnFilestore()));
+	$temp_file->open('write');
+	$temp_file->close();
+	
+	copy($upload->getPathname(), $temp_file->getFilenameOnFilestore());
+	
+	_elgg_services()->imageService->fixOrientation($temp_file->getFilenameOnFilestore());
+	
 	// resize image to save diskspace (2048x2048px)
-	$success = elgg_save_resized_image($upload->getPathname(), $fh->getFilenameOnFilestore(), [
+	$success = elgg_save_resized_image($temp_file->getFilenameOnFilestore(), $fh->getFilenameOnFilestore(), [
 		'w' => 2048,
 		'h' => 2048,
 		'square' => false,
 		'upscale' => false,
 	]);
+	
 } catch (Exception $e) {
 	$response_params['error'] = $e->getMessage();
 	
