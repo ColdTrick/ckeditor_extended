@@ -1,6 +1,10 @@
 Version history
 ===============
 
+4.0.3 (2019-09-18):
+
+- fixed: fix orientation of uploaded images
+
 4.0.2 (2019-08-22):
 
 - fixed: need to tell upload to use old style uploading
