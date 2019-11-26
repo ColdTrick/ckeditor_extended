@@ -9,7 +9,7 @@ $user_files = '';
 
 // asset library files
 if (elgg_is_active_plugin('asset_library')) {
-	$assets = elgg_get_entities_from_metadata([
+	$assets = elgg_get_entities([
 		'type' => 'object',
 		'subtype' => 'asset_file',
 		'metadata_name_value_pairs' => ['simpletype' => 'image'],
