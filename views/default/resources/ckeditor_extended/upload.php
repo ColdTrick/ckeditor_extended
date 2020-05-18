@@ -27,7 +27,7 @@ if (!$upload->isValid()) {
 }
 
 // check if it's an image
-if (elgg_get_file_simple_type($upload->getMimeType()) !== 'image') {
+if (elgg()->mimetype->getSimpleType($upload->getMimeType()) !== 'image') {
 	$response_params['error'] = elgg_echo('ckeditor_extended:upload:no_image');
 	
 	echo ckeditor_extended_get_file_upload_response($response_params);
