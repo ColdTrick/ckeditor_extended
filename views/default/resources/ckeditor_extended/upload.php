@@ -1,5 +1,7 @@
 <?php
 
+use Elgg\Project\Paths;
+
 elgg_gatekeeper();
 
 $user_guid = elgg_get_logged_in_user_guid();
@@ -35,6 +37,8 @@ if (elgg()->mimetype->getSimpleType($upload->getMimeType()) !== 'image') {
 }
 
 $filename = $upload->getClientOriginalName();
+$filename = Paths::sanitize($filename, false);
+
 $prefix = '';
 if ($response_params['response_type'] === 'json') {
 	// store pasted images in different location

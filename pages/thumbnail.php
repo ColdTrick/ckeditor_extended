@@ -1,4 +1,6 @@
 <?php
+use Elgg\Project\Paths;
+
 /**
  * Show the thumbnail
  *
@@ -12,6 +14,8 @@ if (!isset($_GET['guid']) || !isset($_GET['name'])) {
 }
 
 $name = $_GET['name'];
+$name = Paths::sanitize($name, false);
+
 $guid = (int) $_GET['guid'];
 
 $autoload_root = dirname(dirname(dirname(__DIR__)));
