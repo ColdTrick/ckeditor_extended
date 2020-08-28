@@ -27,8 +27,11 @@ function ckeditor_extended_get_inline_object($id, $create = false) {
 			'type' => 'object',
 			'subtype' => 'ckeditor_inline',
 			'limit' => false,
-			'joins' => 'JOIN ' . elgg_get_config('dbprefix') . "objects_entity oe ON oe.guid = e.guid",
-			'wheres' => "oe.title LIKE '{$prefix}%'",
+			'metadata_value_pairs' => [
+				'name' => 'title',
+				'value' => $prefix,
+				'operand' => 'LIKE',
+			],
 		]);
 		foreach ($entities as $entity) {
 			$cached[$prefix][$entity->title] = $entity;

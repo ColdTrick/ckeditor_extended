@@ -34,6 +34,7 @@ return [
 	],
 	'actions' => [
 		'ckeditor_extended/delete' => [],
+		'ckeditor_extended/inline_edit' => ['access' => 'admin'],
 		'ckeditor_extended/change_category' => ['access' => 'admin'],
 	],
 ];

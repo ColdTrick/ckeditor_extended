@@ -25,16 +25,13 @@ if (!elgg_is_admin_logged_in()) {
 }
 ?>
 <script>
-	require(['elgg', 'elgg/ckeditor'], function (elgg, elggCKEditor) {
- 		elggCKEditor.bind('#<?php echo $id;?>');
-
- 		var textArea = $('#<?php echo $id;?>');
-		var editor = textArea.ckeditorGet();
-
+	require(['elgg', 'elgg-ckeditor'], function (elgg, elggCKEditor) {
+		
+ 		
 		var timeout;
 		
 		// The "change" event is fired whenever a change is made in the editor.
-		editor.on('change', function(evt) {
+		CKEDITOR.inline( '<?php echo $id;?>' ).on('change', function(evt) {
 			// getData() returns CKEditor's HTML content.
 			
 			clearTimeout(timeout);
