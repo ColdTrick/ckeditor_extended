@@ -1,6 +1,11 @@
 Version history
 ===============
 
+4.0.5 (2020-09-01):
+
+- changed: inline edit functionality has been restored
+- fixed: sanitize user provided file paths
+
 4.0.4 (2020-05-26):
 
 - fixed: replaced deprecated function call
