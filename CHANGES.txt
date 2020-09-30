@@ -1,6 +1,10 @@
 Version history
 ===============
 
+4.0.6 (2020-09-30):
+
+- fixed: sanitize filename after autoloaded is loaded
+
 4.0.5 (2020-09-01):
 
 - changed: inline edit functionality has been restored
