@@ -19,9 +19,16 @@ if (empty($editor_config)) {
 	$editor_config = elgg_view('ckeditor_extended/default_config');
 }
 
-echo elgg_view_field([
+$editor_config_simple = $plugin->editor_config_simple;
+if (empty($editor_config_simple)) {
+	$editor_config_simple = elgg_view('ckeditor_extended/default_config_simple');
+}
+
+$editor_settings = '';
+
+$editor_settings .= elgg_view_field([
 	'#type' => 'plaintext',
-	'#label' => elgg_echo('ckeditor_extended:settings:editor_config'),
+	'#label' => elgg_echo('ckeditor_extended:settings:editor_config') . ' [default]',
 	'#help' => elgg_view('output/url', [
 		'href' => 'http://docs.ckeditor.com/#!/api/CKEDITOR.config',
 		'text' => elgg_echo('ckeditor_extended:settings:link'),
@@ -31,7 +38,19 @@ echo elgg_view_field([
 	'value' => $editor_config,
 ]);
 
-echo elgg_view_field([
+$editor_settings .= elgg_view_field([
+	'#type' => 'plaintext',
+	'#label' => elgg_echo('ckeditor_extended:settings:editor_config') . ' [simple]',
+	'name' => 'params[editor_config_simple]',
+	'value' => $editor_config_simple,
+]);
+
+echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:editors'), $editor_settings);
+
+// Global Editor settings
+$global_settings = '';
+
+$global_settings .= elgg_view_field([
 	'#type' => 'select',
 	'#label' => elgg_echo('ckeditor_extended:settings:show_html_toggler'),
 	'name' => 'params[show_html_toggler]',
@@ -43,7 +62,7 @@ echo elgg_view_field([
 	],
 ]);
 
-echo elgg_view_field([
+$global_settings .= elgg_view_field([
 	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:image_upload_allowed'),
 	'#help' => elgg_echo('ckeditor_extended:settings:image_upload_allowed:help'),
@@ -54,7 +73,7 @@ echo elgg_view_field([
 	'value' => 'yes',
 ]);
 
-echo elgg_view_field([
+$global_settings .= elgg_view_field([
 	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:image_upload_browse'),
 	'#help' => elgg_echo('ckeditor_extended:settings:image_upload_browse:help'),
@@ -65,7 +84,7 @@ echo elgg_view_field([
 	'value' => 'yes',
 ]);
 
-echo elgg_view_field([
+$global_settings .= elgg_view_field([
 	'#type' => 'checkbox',
 	'#label' => elgg_echo('ckeditor_extended:settings:overwrite_uploaded_images'),
 	'#help' => elgg_echo('ckeditor_extended:settings:overwrite_uploaded_images:help'),
@@ -75,6 +94,8 @@ echo elgg_view_field([
 	'default' => 'no',
 	'value' => 'yes',
 ]);
+
+echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:global'), $global_settings);
 
 // HTMLawed settings
 $htmlawed_settings = elgg_view('output/longtext', [

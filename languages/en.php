@@ -3,7 +3,9 @@
 return array(
 	
 	// plugin settings
+	'ckeditor_extended:settings:editors' => "Editors",
 	'ckeditor_extended:settings:editor_config' => "Please enter the new settings below",
+	'ckeditor_extended:settings:global' => "Global editor settings",
 	'ckeditor_extended:settings:link' => "Check out the CKEditor website for all the available settings",
 	'ckeditor_extended:settings:image_upload_allowed' => "Allow image upload by using the editor",
 	'ckeditor_extended:settings:image_upload_allowed:help' => "This will add a tab to the image dialog, allow drag&dropping of images in the editor and allow pasting of images in the editor.",

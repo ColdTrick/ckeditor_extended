@@ -1,10 +1,12 @@
 <?php
 /**
- * This file was created by Translation Editor v5.2
- * On 2017-04-04 15:30
+ * This file was created by Translation Editor v7.0.4
+ * On 2020-10-05 13:25
  */
 
 return array (
+  'ckeditor_extended:settings:editors' => 'Editors',
+  'ckeditor_extended:settings:global' => 'Globale editor instellingen',
   'ckeditor_extended:settings:image_upload_allowed:help' => 'Dit voegt een tab toe aan de afbeelding dialog, staat het toe afbeeldingen in de editor te slepen en afbeeldingen te plakken',
   'ckeditor_extended:settings:image_upload_browse' => 'Bladeren door eerder geüploade afbeeldingen',
   'ckeditor_extended:settings:image_upload_browse:help' => 'Dit voegt een knop toe aan de afbeelding dialog waarmee je door eerder, via de tab, geüploade bestanden kunt bladeren',

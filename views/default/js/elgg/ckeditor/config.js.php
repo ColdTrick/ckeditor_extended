@@ -15,5 +15,7 @@ define(function(require) {
 	var elgg = require('elgg');
 	var $ = require('jquery');
 
-	return elgg.trigger_hook('config', 'ckeditor', {'editor': 'default'}, { <?php echo $settings ?> });
+	return elgg.trigger_hook('config', 'ckeditor', {'editor': 'default'}, {
+		<?php echo $settings ?>
+	});
 });

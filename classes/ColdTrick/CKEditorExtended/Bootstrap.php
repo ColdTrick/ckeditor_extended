@@ -20,6 +20,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		
 		// this way a simplecache JS file can be loaded from a .php file
 		elgg_register_simplecache_view('js/elgg/ckeditor/config.js');
+		elgg_register_simplecache_view('js/elgg/ckeditor/config/simple.js');
 		
 		// register plugin hook handlers
 		$hooks = $this->elgg()->hooks;
