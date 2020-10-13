@@ -1,6 +1,10 @@
 Version history
 ===============
 
+4.1 (2020-10-13):
+
+- added: you can now configure the simple editor config
+
 4.0.6 (2020-09-30):
 
 - fixed: sanitize filename after autoloaded is loaded
