@@ -262,5 +262,13 @@ define(function (require) {
 
 	$(document).on('focus', '[data-cke-init]', elggCKEditor.focusEditor);
 
+	$(document).on('change', '.elgg-list', function() {
+		// triggered by hypeList when new data arrives
+		// the list is sorted, so we need to recreate editors (assumed to be destroyed by hypeList)
+		$(this).find('[data-cke-init]').each(function(index, item) {
+			$(item).ckeditor(elggCKEditor.init, $(item).data('elggCKEeditorConfig'));
+		});
+	});
+
 	return elggCKEditor;
 });
