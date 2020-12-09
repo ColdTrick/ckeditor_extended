@@ -27,6 +27,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		
 		$hooks->registerHandler('config', 'htmlawed', '\ColdTrick\CKEditorExtended\HTMLawed::extendConfig');
 		$hooks->registerHandler('register', 'menu:longtext', '\ColdTrick\CKEditorExtended\Menus::registerLongtextMenu', 999);
+		$hooks->registerHandler('view_vars', 'output/longtext', __NAMESPACE__ . '\Views::stripEmptyClosingParagraph');
 		
 		$this->extendCKEditorViews();
 	}
