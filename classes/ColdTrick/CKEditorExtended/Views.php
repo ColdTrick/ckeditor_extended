@@ -18,7 +18,7 @@ class Views {
 			return;
 		}
 		
-		$vars['value'] = preg_replace('/<p>(&nbsp;)*<\/p>$/', '', trim($vars['value']));
+		$vars['value'] = preg_replace('/((\r\n|\r|\n)*<p>(&nbsp;)*<\/p>)+$/', '', trim($vars['value']));
 		
 		return $vars;
 	}
