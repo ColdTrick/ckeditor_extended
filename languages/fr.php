@@ -1,0 +1,26 @@
+<?php
+
+return array (
+  'ckeditor_extended:settings:editor_config' => 'Saisissez les nouveaux paramètres ci-dessous',
+  'ckeditor_extended:settings:link' => 'Consultez le site web CKEditor pour connaître tous les paramètres disponibles',
+  'ckeditor_extended:settings:image_upload_allowed' => 'Autoriser le téléchargement d\'images en utilisant l\'éditeur',
+  'ckeditor_extended:settings:image_upload_allowed:help' => 'Cela ajoutera un onglet au dialogue des images, permettra le glisser-déposer d\'images dans l\'éditeur et le collage d\'images dans l\'éditeur.',
+  'ckeditor_extended:settings:image_upload_browse' => 'Permet de parcourir les images précédemment téléchargées',
+  'ckeditor_extended:settings:image_upload_browse:help' => 'Cela ajoutera un bouton dans la boîte de dialogue pour parcourir les images téléchargées dans l\'onglet de téléchargement.',
+  'ckeditor_extended:settings:overwrite_uploaded_images' => 'Écraser les images existantes portant le même nom lors du téléchargement',
+  'ckeditor_extended:settings:overwrite_uploaded_images:help' => 'Cela ne s\'applique qu\'aux images téléchargées depuis la boîte de dialogue de l\'éditeur, et non aux images glisser-déposer et collées (celles-ci sont toujours uniques).',
+  'ckeditor_extended:settings:show_html_toggler' => 'Afficher le lien de basculement de l\'éditeur vers HTML',
+  'ckeditor_extended:settings:show_html_toggler:option:admin_only' => 'Réservé aux administrateurs',
+  'ckeditor_extended:settings:htmlawed:title' => 'Configuration HTML',
+  'ckeditor_extended:settings:htmlawed:info' => 'Configurer des règles supplémentaires pour les balises html pour faire confiance à des éléments ou des actions spécifiques',
+  'ckeditor_extended:settings:htmlawed:elements' => 'Éléments HTML',
+  'ckeditor_extended:settings:htmlawed:schemes' => 'Schémas',
+  'ckeditor_extended:settings:example' => 'Exemple de vos paramètres',
+  'ckeditor_extended:settings:example:description' => 'Cet éditeur affiche les réglages en vigueur du plugin afin que vous puissiez les tester. Peu importe ce que vous saisissez dans ce champ, il ne sera pas enregistré.',
+  'ckeditor_extended:upload:no_image' => 'Le fichier transmis n\'est pas une image',
+  'ckeditor_extended:upload:no_upload' => 'Aucun téléchargement réussi. Peut-être que le fichier est trop gros',
+  'ckeditor_extended:upload:resize_failed' => 'L\'image n\'a pas pu être redimensionnée',
+  'ckeditor_extended:output:inline_edit:default' => 'Aucun contenu n\'a encore été sauvegardé. Commencez à taper ici',
+  'ckeditor_extended:browse:files:site' => 'Fichiers du site',
+  'ckeditor_extended:browse:files:user' => 'Vos fichiers',
+);
