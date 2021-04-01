@@ -14,6 +14,18 @@ define(function(require) {
 	require('elgg/init');
 	var elgg = require('elgg');
 	var $ = require('jquery');
+	
+	$(window).on('beforeunload.ckeditor', function(event) {
+		for(editorName in CKEDITOR.instances) {
+			if (CKEDITOR.instances[editorName].checkDirty()) {
+				return true;
+			}
+		}
+	});
+	
+	$('form').on('submit', function() {
+		$(window).off('beforeunload.ckeditor');
+	});
 
 	return elgg.trigger_hook('config', 'ckeditor', {'editor': 'default'}, {
 		<?php echo $settings ?>
