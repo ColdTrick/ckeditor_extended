@@ -269,6 +269,18 @@ define(function (require) {
 			$(item).ckeditor(elggCKEditor.init, $(item).data('elggCKEeditorConfig'));
 		});
 	});
+	
+	$(window).on('beforeunload.ckeditor', function(event) {
+		for(editorName in CKEDITOR.instances) {
+			if (CKEDITOR.instances[editorName].checkDirty()) {
+				return true;
+			}
+		}
+	});
+	
+	$('form').on('submit', function() {
+		$(window).off('beforeunload.ckeditor');
+	});
 
 	return elggCKEditor;
 });
