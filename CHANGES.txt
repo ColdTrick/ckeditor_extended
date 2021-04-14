@@ -1,6 +1,11 @@
 Version history
 ===============
 
+4.2 (2021-04-14):
+
+- added: detect dirty editors on page leave and show a notice
+- added: French translation
+
 4.1.1 (2021-01-19):
 
 - fixed: re-init editors in list after hypelist reorders them
