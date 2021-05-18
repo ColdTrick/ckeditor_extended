@@ -272,13 +272,15 @@ define(function (require) {
 	
 	$(window).on('beforeunload.ckeditor', function(event) {
 		for(editorName in CKEDITOR.instances) {
-			if (CKEDITOR.instances[editorName].checkDirty()) {
+			var editor = CKEDITOR.instances[editorName];
+
+			if (editor.checkDirty() && $('#' + editor.name).closest('form').is(':visible')) {
 				return true;
 			}
 		}
 	});
 	
-	$('form').on('submit', function() {
+	$(document).on('submit', 'form', function() {
 		$(window).off('beforeunload.ckeditor');
 	});
 
