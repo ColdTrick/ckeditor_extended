@@ -1,6 +1,10 @@
 Version history
 ===============
 
+4.2.1 (2021-05-25):
+
+- fixed: only show onunload message for visible editors
+
 4.2 (2021-04-14):
 
 - added: detect dirty editors on page leave and show a notice
