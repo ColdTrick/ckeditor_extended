@@ -25,9 +25,9 @@ if (!elgg_is_admin_logged_in()) {
 }
 ?>
 <script>
-	require(['elgg', 'elgg-ckeditor'], function (elgg, elggCKEditor) {
+	require(['elgg/Ajax', 'elgg-ckeditor'], function (Ajax, elggCKEditor) {
 		
- 		
+ 		var ajax = new Ajax();
 		var timeout;
 		
 		// The "change" event is fired whenever a change is made in the editor.
@@ -36,7 +36,7 @@ if (!elgg_is_admin_logged_in()) {
 			
 			clearTimeout(timeout);
 			timeout = setTimeout(function() {
-				elgg.action('ckeditor_extended/inline_edit', {
+				ajax.action('ckeditor_extended/inline_edit', {
 					data: {
 						'id': '<?php echo $id; ?>',
 						'description': evt.editor.getData()

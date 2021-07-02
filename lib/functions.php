@@ -25,7 +25,7 @@ function ckeditor_extended_get_inline_object(string $id, bool $create = false) {
 		// preload entities
 		$entities = elgg_get_entities([
 			'type' => 'object',
-			'subtype' => 'ckeditor_inline',
+			'subtype' => \CKEditorInline::SUBTYPE,
 			'limit' => false,
 			'metadata_value_pairs' => [
 				'name' => 'title',
@@ -46,12 +46,8 @@ function ckeditor_extended_get_inline_object(string $id, bool $create = false) {
 		return false;
 	}
 	
-	$object = new \ElggObject();
-	$object->subtype = 'ckeditor_inline';
+	$object = new \CKEditorInline();
 	$object->title = $id;
-	$object->owner_guid = elgg_get_site_entity()->guid;
-	$object->container_guid = elgg_get_site_entity()->guid;
-	$object->access_id = ACCESS_PUBLIC;
 	
 	$cached[$prefix][$id] = $object;
 	

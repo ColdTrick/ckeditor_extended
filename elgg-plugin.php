@@ -19,6 +19,13 @@ return [
 		],
 	],
 	'bootstrap' => Bootstrap::class,
+	'entities' => [
+		[
+			'type' => 'object',
+			'subtype' => CKEditorInline::SUBTYPE,
+			'class' => CKEditorInline::class,
+		],
+	],
 	'settings' => [
 		'show_html_toggler' => 'yes',
 		'image_upload_allowed' => 'no',

@@ -132,4 +132,7 @@ $example_content .= elgg_view_field([
 	'value' => elgg_echo('ckeditor_extended:settings:example:description'),
 ]);
 
+$example_content .= elgg_format_element('label', [], 'inline object');
+$example_content .= elgg_view('output/inline_edit', ['id' => 'ckeditor_extended_settings']);
+
 echo elgg_view_module('info', elgg_echo('ckeditor_extended:settings:example'), $example_content);

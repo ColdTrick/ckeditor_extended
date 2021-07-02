@@ -12,3 +12,5 @@ if (empty($object)) {
 
 $object->description = $description;
 $object->save();
+
+return elgg_ok_response('', elgg_echo('save:success'));
