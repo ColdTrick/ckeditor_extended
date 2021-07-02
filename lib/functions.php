@@ -11,7 +11,7 @@
  *
  * @return /ElggObject|false
  */
-function ckeditor_extended_get_inline_object($id, $create = false) {
+function ckeditor_extended_get_inline_object(string $id, bool $create = false) {
 	static $cached = [];
 	if (empty($id)) {
 		return false;
@@ -65,7 +65,7 @@ function ckeditor_extended_get_inline_object($id, $create = false) {
  *
  * @return string
  */
-function ckeditor_extended_get_file_upload_response($params = []) {
+function ckeditor_extended_get_file_upload_response(array $params = []): string {
 	
 	$response = '';
 	
@@ -100,9 +100,8 @@ function ckeditor_extended_get_file_upload_response($params = []) {
  *
  * @return false|CKEditorFile
  */
-function ckeditor_extended_get_file_handler($user_guid = 0) {
+function ckeditor_extended_get_file_handler(int $user_guid = 0) {
 	
-	$user_guid = (int) $user_guid;
 	if (empty($user_guid)) {
 		$user_guid = elgg_get_logged_in_user_guid();
 	}

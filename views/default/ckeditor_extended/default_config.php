@@ -7,7 +7,7 @@ toolbar: [['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'], ['NumberedL
 removeButtons: 'Subscript,Superscript', // To have Underline back
 allowedContent: true,
 baseHref: elgg.get_site_url(),
-removePlugins: 'liststyle,contextmenu,tabletools,tableselection',
+removePlugins: 'liststyle,contextmenu,tabletools,tableselection,image',
 extraPlugins: 'blockimagepaste,image2',
 defaultLanguage: 'en',
 language: elgg.get_language(),

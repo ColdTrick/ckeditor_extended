@@ -10,6 +10,14 @@ if (is_dir(__DIR__ . '/vendor')) {
 }
 
 return [
+	'plugin' => [
+		'version' => '4.2.1',
+		'dependencies' => [
+			'ckeditor' => [
+				'position' => 'after',
+			],
+		],
+	],
 	'bootstrap' => Bootstrap::class,
 	'settings' => [
 		'show_html_toggler' => 'yes',

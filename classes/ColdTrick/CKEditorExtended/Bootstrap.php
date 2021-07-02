@@ -47,8 +47,6 @@ class Bootstrap extends DefaultPluginBootstrap {
 			'textmatch',
 			'autocomplete',
 			'textwatcher',
-			'ajax',
-			'xml',
 		];
 		
 		foreach ($extras as $extra) {

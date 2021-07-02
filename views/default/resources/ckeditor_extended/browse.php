@@ -56,7 +56,8 @@ if (!empty($fh) && !empty($dir)) {
 		]);
 		
 		$text = elgg_view('output/url',[
-			'text' => elgg_view_icon('delete-alt-hover'),
+			'text' => false,
+			'icon' => 'delete',
 			'href' => elgg_http_add_url_query_elements('action/ckeditor_extended/delete', [
 				'guid' => $user_guid,
 				'name' => $file,

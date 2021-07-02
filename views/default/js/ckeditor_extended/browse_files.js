@@ -1,36 +1,29 @@
-define(function(require) {
-	var elgg = require('elgg');
-	var $ = require('jquery');
+define(['jquery', 'elgg', 'elgg/Ajax'], function($, elgg, Ajax) {
+	var ajax = new Ajax(false);
 	
-
-	init = function() {
-	
-		$('.ckeditor-extended-browse > li').click(function(event) {
-			if (event.target.nodeName == 'SPAN') return;
-			
-			var url = $(this).data().embedUrl;
-			
-			var funcNum = $(this).parent().attr('rel');
-			
-			window.opener.CKEDITOR.tools.callFunction(funcNum, url, '');
-			window.close();
-		});
-					
-		$(document).on('click', '.ckeditor-delete-file', function(event) {
-			event.preventDefault();
-			event.stopPropagation();
-			event.stopImmediatePropagation();
-			
-			if (confirm(elgg.echo('question:areyousure'))) {
-				var href = $(this).attr('href');
+	$('.ckeditor-extended-browse > li').click(function(event) {
+		if (event.target.nodeName == 'SPAN') return;
+		
+		var url = $(this).data().embedUrl;
+		
+		var funcNum = $(this).parent().attr('rel');
+		
+		window.opener.CKEDITOR.tools.callFunction(funcNum, url, '');
+		window.close();
+	});
 				
-				$(this).parents('li').hide();
-				elgg.action(href);
+	$(document).on('click', '.ckeditor-delete-file', function(event) {
+		event.preventDefault();
+		event.stopPropagation();
+		event.stopImmediatePropagation();
+		
+		if (confirm(elgg.echo('question:areyousure'))) {
+			var href = $(this).attr('href');
 			
-				return false;
-			}
-		});
-	};
-	
-	init();
+			$(this).parents('li').hide();
+			ajax.path(href);
+		
+			return false;
+		}
+	});
 });

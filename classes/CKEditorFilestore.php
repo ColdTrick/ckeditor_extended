@@ -1,5 +1,8 @@
 <?php
 
+use Elgg\Exceptions\InvalidParameterException;
+use Elgg\Exceptions\InvalidArgumentException;
+
 class CKEditorFilestore extends ElggDiskFilestore {
 	
 	/**
@@ -37,7 +40,7 @@ class CKEditorFilestore extends ElggDiskFilestore {
 		
 		if (!$owner_guid) {
 			$msg = "File {$file->getFilename()} (file guid: {$file->guid}) is missing an owner!";
-			throw new \InvalidParameterException($msg);
+			throw new InvalidParameterException($msg);
 		}
 		
 		$filename = $file->getFilename();
@@ -54,7 +57,7 @@ class CKEditorFilestore extends ElggDiskFilestore {
 		];
 		if (in_array(false, $parts)) {
 			$msg = "Unable to create a valid folder structure";
-			throw new \InvalidArgumentException($msg);
+			throw new InvalidArgumentException($msg);
 		}
 		
 		$trim = function($value) {

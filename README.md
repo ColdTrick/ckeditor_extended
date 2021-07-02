@@ -1,6 +1,7 @@
 CKEditor Extended
 =================
 
+![Elgg 4.0](https://img.shields.io/badge/Elgg-4.0-green.svg)
 [![Build Status](https://scrutinizer-ci.com/g/ColdTrick/ckeditor_extended/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ColdTrick/ckeditor_extended/build-status/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ColdTrick/ckeditor_extended/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ColdTrick/ckeditor_extended/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/coldtrick/ckeditor_extended/v/stable.svg)](https://packagist.org/packages/coldtrick/ckeditor_extended)
