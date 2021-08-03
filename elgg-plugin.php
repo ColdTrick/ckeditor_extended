@@ -22,7 +22,7 @@ return [
 	'entities' => [
 		[
 			'type' => 'object',
-			'subtype' => CKEditorInline::SUBTYPE,
+			'subtype' => 'ckeditor_inline',
 			'class' => CKEditorInline::class,
 		],
 	],
