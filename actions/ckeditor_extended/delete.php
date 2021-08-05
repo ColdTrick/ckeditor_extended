@@ -20,7 +20,6 @@ if (empty($fh)) {
 }
 
 $fh->setFilename($name);
-error_log($fh->getFilenameOnFilestore());
 if ($fh->exists()) {
 	$fh->delete();
 }
