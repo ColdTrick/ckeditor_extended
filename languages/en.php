@@ -1,7 +1,7 @@
 <?php
 
 return array(
-	
+	'item:object:ckeditor_inline' => "CKEditor inline item",
 	// plugin settings
 	'ckeditor_extended:settings:editors' => "Editors",
 	'ckeditor_extended:settings:editor_config' => "Please enter the new settings below",
