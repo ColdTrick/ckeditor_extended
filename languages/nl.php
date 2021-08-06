@@ -1,10 +1,11 @@
 <?php
 /**
- * This file was created by Translation Editor v7.0.4
- * On 2020-10-05 13:25
+ * This file was created by Translation Editor v8.0
+ * On 2021-08-06 09:55
  */
 
 return array (
+  'item:object:ckeditor_inline' => 'CKEditor inline item',
   'ckeditor_extended:settings:editors' => 'Editors',
   'ckeditor_extended:settings:global' => 'Globale editor instellingen',
   'ckeditor_extended:settings:image_upload_allowed:help' => 'Dit voegt een tab toe aan de afbeelding dialog, staat het toe afbeeldingen in de editor te slepen en afbeeldingen te plakken',
