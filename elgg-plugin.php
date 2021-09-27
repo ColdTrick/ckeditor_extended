@@ -11,7 +11,7 @@ if (is_dir(__DIR__ . '/vendor')) {
 
 return [
 	'plugin' => [
-		'version' => '4.2.1',
+		'version' => '5.0',
 		'dependencies' => [
 			'ckeditor' => [
 				'position' => 'after',
