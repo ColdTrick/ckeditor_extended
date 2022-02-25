@@ -44,7 +44,13 @@ return [
 		],
 		'default:ckeditor_extended:download' => [
 			'path' => '/ckeditor/download/{user_guid}/{file_name}',
-			'resource' => 'ckeditor_extended/download',
+			'controller' => \ColdTrick\CKEditorExtended\Controllers\Download::class,
+			'deprecated' => true,
+		],
+		'default:ckeditor_extended:thumbnail' => [
+			'path' => '/mod/ckeditor_extended/pages/thumbnail.php',
+			'controller' => \ColdTrick\CKEditorExtended\Controllers\Thumbnail::class,
+			'deprecated' => true,
 		],
 	],
 	'actions' => [
