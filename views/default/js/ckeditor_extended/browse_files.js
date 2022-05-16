@@ -1,4 +1,4 @@
-define(['jquery', 'elgg', 'elgg/Ajax'], function($, elgg, Ajax) {
+define(['jquery', 'elgg/i18n', 'elgg/Ajax'], function($, i18n, Ajax) {
 	var ajax = new Ajax(false);
 	
 	$('.ckeditor-extended-browse > li').click(function(event) {
@@ -17,7 +17,7 @@ define(['jquery', 'elgg', 'elgg/Ajax'], function($, elgg, Ajax) {
 		event.stopPropagation();
 		event.stopImmediatePropagation();
 		
-		if (confirm(elgg.echo('question:areyousure'))) {
+		if (confirm(i18n.echo('question:areyousure'))) {
 			var href = $(this).attr('href');
 			
 			$(this).parents('li').hide();
