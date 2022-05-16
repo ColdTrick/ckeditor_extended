@@ -198,7 +198,7 @@ define(function (require) {
 			}
 
 			if (visual === false) {
-				$toggler.html(elgg.echo('ckeditor:visual'));
+				$toggler.html(i18n.echo('ckeditor:visual'));
 			}
 
 			// show the toggle-editor link which is hidden by default, so it will only show up if the editor is correctly loaded
