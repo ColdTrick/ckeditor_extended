@@ -75,9 +75,10 @@ define(function (require) {
 							.addClass('ckeditor-extended-required-textarea')
 							.html(this.getData());
 						
-						// using filter as there are multiple textareas with the same id
-						$('#' + this.name + '.ckeditor-extended-required-textarea').replaceWith($replacement).trigger('input');
+						$('#' + this.name + '.ckeditor-extended-required-textarea').replaceWith($replacement);
 						
+						// need to use selecter again otherwise the trigger will not happen on the correct dom element
+						$('#' + this.name + '.ckeditor-extended-required-textarea').trigger('input');						
 					});
 				});
 				
