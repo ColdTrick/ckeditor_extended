@@ -54,7 +54,7 @@ class Bootstrap extends DefaultPluginBootstrap {
 		}
 		
 		$languages = ['en'];
-		$languages[] = get_current_language();
+		$languages[] = elgg_get_current_language();
 		$languages = array_unique($languages);
 		
 		$plugins = [
